@@ -1,0 +1,38 @@
+{% extends "website/base.html" %}
+{% block title %}{{ service.title }} | BrandLumeo LLP{% endblock %}
+{% block content %}
+
+<section class="service-detail-hero">
+    <div class="container">
+        <a href="{% url 'services' %}#{{ service.section_id }}" class="service-detail-back">Back to Services</a>
+        <span class="service-detail-kicker">{{ service.section_name }}</span>
+        <h1>{{ service.title }}</h1>
+        <p>{{ service.short_description }}</p>
+    </div>
+</section>
+
+<section class="service-detail-page">
+    <div class="container">
+        <article class="service-detail-card">
+            <div class="service-detail-media">
+                <img src="{{ service.image }}" alt="{{ service.title }}" class="service-detail-image service-detail-image--{{ service.slug }}" loading="lazy"
+                    onerror="if(this.dataset.fallbackApplied!=='1'){this.dataset.fallbackApplied='1';this.src='{{ service.fallback_image }}';}">
+            </div>
+            <div class="service-detail-content">
+                <h2>Service Overview</h2>
+                <p>{{ service.description }}</p>
+                <h3>What You Get</h3>
+                <ul>
+                    {% for item in service.highlights %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="service-detail-actions">
+                    <a href="{% url 'contact' %}" class="btn">Discuss This Service</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+{% endblock %}

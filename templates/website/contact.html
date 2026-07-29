@@ -1,0 +1,516 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% block title %}Contact Brandlumeo – Let's Start a Project{% endblock %}
+{% block meta_description %}Get in touch with Brandlumeo. Discuss your digital marketing, branding, or website and app development goals. We respond within 24 hours.{% endblock %}
+
+{% block content %}
+<style>
+/* ============================================================
+   CONTACT PAGE — PROFESSIONAL REDESIGN
+   ============================================================ */
+
+/* ── Hero ─────────────────────────────────────────────── */
+.cn-hero {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    min-height: 500px;
+    max-height: 700px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+.cn-hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 8s ease;
+}
+.cn-hero:hover .cn-hero__img { transform: scale(1.04); }
+.cn-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to top, rgba(10,10,15,0.98) 0%,
+                                 rgba(10,10,15,0.55) 50%,
+                                 rgba(10,10,15,0.2) 100%),
+        linear-gradient(95deg, rgba(10,10,15,0.7) 0%, transparent 60%);
+}
+.cn-hero__content {
+    position: relative;
+    z-index: 2;
+    width: min(1600px, 92%);
+    margin: 0 auto;
+    padding-bottom: 72px;
+}
+.cn-hero__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #4ade80;
+    margin-bottom: 20px;
+}
+.cn-hero__tag::before {
+    content: '';
+    width: 28px;
+    height: 2px;
+    background: #4ade80;
+    border-radius: 2px;
+}
+.cn-hero__content h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 5.5vw, 68px);
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
+    max-width: 18ch;
+}
+.cn-hero__content h1 em {
+    font-style: normal;
+    color: #86efac;
+}
+.cn-hero__content p {
+    color: rgba(255,255,255,0.75);
+    font-size: 18px;
+    line-height: 1.75;
+    max-width: 50ch;
+}
+
+/* ── Contact Grid ─────────────────────────────────────── */
+.cn-section {
+    background: #f9fafb;
+    padding: 100px 0;
+}
+.cn-grid {
+    width: min(1600px, 92%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+}
+
+/* ── Contact Info Cards (Left) ────────────────────────── */
+.cn-info {
+    display: flex;
+    flex-direction: column;
+}
+.cn-info__header {
+    margin-bottom: 40px;
+}
+.cn-info__header h2 {
+    font-family: "Space Grotesk", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: clamp(30px, 3vw, 40px);
+    color: #0d1f14;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+}
+.cn-info__header p {
+    color: #000000;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.cn-info-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+.cn-info-card {
+    background: #fff;
+    border: 1px solid #eef0f3;
+    border-radius: 16px;
+    padding: 24px 20px;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.cn-info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(15,23,42,0.06);
+    border-color: #000000;
+}
+.cn-info-card__icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(22,163,74,0.08);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    color: #16a34a;
+    margin-bottom: 16px;
+}
+.cn-info-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0d1f14;
+    margin-bottom: 6px;
+}
+.cn-info-card p {
+    font-size: 15px;
+    color: #000000;
+    line-height: 1.5;
+}
+.cn-info-card a {
+    color: #16a34a;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.cn-info-card a:hover {
+    color: #15803d;
+}
+
+/* Social Links */
+.cn-social {
+    background: #fff;
+    border: 1px solid #eef0f3;
+    border-radius: 16px;
+    padding: 28px;
+}
+.cn-social h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0d1f14;
+    margin-bottom: 16px;
+}
+.cn-social-links {
+    display: flex;
+    gap: 12px;
+}
+.cn-social-link {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    display: grid;
+    place-items: center;
+    color: #000000;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+.cn-social-link svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+.cn-social-link:hover {
+    background: #16a34a;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* ── Contact Form (Right) ─────────────────────────────── */
+.cn-form-box {
+    background: #fff;
+    border-radius: 24px;
+    padding: 56px 48px;
+    box-shadow: 0 20px 60px rgba(15,23,42,0.05);
+    border: 1px solid #edf0f2;
+}
+.cn-form-box h2 {
+    font-family: "Space Grotesk", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 36px);
+    color: #0d1f14;
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+}
+.cn-form-box p {
+    color: #000000;
+    font-size: 16px;
+    margin-bottom: 36px;
+}
+
+.cn-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.cn-form input,
+.cn-form textarea {
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: inherit;
+    font-size: 16px;
+    color: #0d1f14;
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.cn-form input::placeholder,
+.cn-form textarea::placeholder {
+    color: #000000;
+}
+.cn-form input:focus,
+.cn-form textarea:focus {
+    outline: none;
+    border-color: #4ade80;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(74,222,128,0.1);
+}
+.cn-form textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+.cn-form__btn {
+    background: #16a34a;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 18px 32px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+    box-shadow: 0 4px 20px rgba(22,163,74,0.3);
+    margin-top: 8px;
+    width: 100%;
+}
+.cn-form__btn:hover {
+    background: #15803d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(22,163,74,0.4);
+}
+
+/* Django Messages in Form */
+.cn-messages {
+    margin-bottom: 24px;
+}
+.cn-message {
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.cn-message--error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+.cn-message--success {
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+/* ── Map Section ──────────────────────────────────────── */
+.cn-map-section {
+    background: #fff;
+    padding: 0 0 100px;
+}
+.cn-map-inner {
+    width: min(1600px, 92%);
+    margin: 0 auto;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #eef0f3;
+}
+.cn-map-header {
+    background: #061409;
+    padding: 48px 56px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+.cn-map-header__info h2 {
+    font-family: "Space Grotesk", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+.cn-map-header__info p {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+}
+.cn-map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.25s, border-color 0.25s;
+}
+.cn-map-link:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: #4ade80;
+}
+.cn-map-frame {
+    width: 100%;
+    height: 450px;
+    display: block;
+    border: none;
+    filter: grayscale(20%) contrast(1.1);
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .cn-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    .cn-form-box {
+        padding: 48px 40px;
+    }
+}
+@media (max-width: 640px) {
+    .cn-info-cards { grid-template-columns: 1fr; }
+    .cn-form-box { padding: 32px 20px; }
+    .cn-form input, .cn-form textarea { padding: 14px 16px; }
+    .cn-map-header { padding: 40px 32px; flex-direction: column; align-items: flex-start; }
+}
+</style>
+
+<!-- ════════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════════ -->
+<section class="cn-hero" role="banner" aria-label="Contact Brandlumeo">
+    <img class="cn-hero__img"
+         src="{% static 'images/contact-handshake.png' %}?v=2"
+         alt="Professional business handshake representing partnership"
+         loading="eager">
+    <div class="cn-hero__overlay"></div>
+    <div class="cn-hero__content">
+        <p class="cn-hero__tag">Connect With Us</p>
+        <h1>Let's build something<br><em>extraordinary</em><br>together.</h1>
+        <p>Have a project in mind, need a consultation, or want a free audit? Drop us a line and let's start scaling your business predictably.</p>
+    </div>
+</section>
+
+<main id="main-content">
+
+<!-- ════════════════════════════════════════════════════
+     CONTACT GRID
+     ════════════════════════════════════════════════════ -->
+<section class="cn-section" aria-label="Contact details and form">
+    <div class="cn-grid">
+        
+        <!-- Left: Contact Info -->
+        <div class="cn-info">
+            <div class="cn-info__header">
+                <h2>Get In Touch</h2>
+                <p>Tell us about your goals and timeline. Our team typically responds within 24 hours.</p>
+            </div>
+
+            <div class="cn-info-cards">
+                <div class="cn-info-card">
+                    <div class="cn-info-card__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h4>Email Us</h4>
+                    <p><a href="mailto:info@brandlumeo.com">info@brandlumeo.com</a></p>
+                </div>
+
+                <div class="cn-info-card">
+                    <div class="cn-info-card__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <h4>Call Us</h4>
+                    <p><a href="tel:+919746457565">+91 9746457565</a></p>
+                </div>
+
+                <div class="cn-info-card">
+                    <div class="cn-info-card__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h4>Office Address</h4>
+                    <p>Payyoli - Perambra Rd, Kozhikode, Kerala 673522</p>
+                </div>
+
+                <div class="cn-info-card">
+                    <div class="cn-info-card__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h4>Working Hours</h4>
+                    <p>Mon - Sat: 9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+
+            <div class="cn-social">
+                <h4>Follow Our Journey</h4>
+                <div class="cn-social-links">
+                    <a href="https://www.linkedin.com/company/111710517/admin/dashboard/" class="cn-social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zM4.943 13.5V6.169H2.542V13.5zM3.743 5.165c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.208 2.4 3.917c0 .694.521 1.248 1.327 1.248zm3.181 8.335h2.401V9.409c0-.219.016-.438.082-.594.178-.438.582-.891 1.261-.891.89 0 1.245.672 1.245 1.656V13.5h2.401V9.303c0-2.247-1.2-3.293-2.8-3.293-1.29 0-1.845.71-2.165 1.21h.016v-1.051H6.924c.03.678 0 7.331 0 7.331z" /></svg>
+                    </a>
+                    <a href="https://www.instagram.com/brandlumeo_/" class="cn-social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg viewBox="0 0 16 16"><path d="M8 1.441c2.134 0 2.389.008 3.233.046.78.036 1.204.166 1.485.275.372.145.637.318.915.596.278.278.451.543.596.915.109.281.239.705.275 1.485.038.844.046 1.099.046 3.233s-.008 2.389-.046 3.233c-.036.78-.166 1.204-.275 1.485a4.06 4.06 0 0 1-.596.915 4.06 4.06 0 0 1-.915.596c-.281.109-.705.239-1.485.275-.844.038-1.099.046-3.233.046s-2.389-.008-3.233-.046c-.78-.036-1.204-.166-1.485-.275a4.06 4.06 0 0 1-.915-.596 4.06 4.06 0 0 1-.596-.915c-.109-.281-.239-.705-.275-1.485C1.45 10.38 1.442 10.125 1.442 7.99s.008-2.389.046-3.233c.036-.78.166-1.204.275-1.485.145-.372.318-.637.596-.915.278-.278.543-.451.915-.596.281-.109.705-.239 1.485-.275C5.611 1.449 5.866 1.441 8 1.441m0-1.441C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a5.5 5.5 0 0 0-1.98 1.29A5.5 5.5 0 0 0 .42 3.69c-.198.509-.332 1.09-.372 1.943C.01 6.486 0 6.759 0 8.93c0 2.17.01 2.444.048 3.297.04.852.174 1.433.372 1.942.22.57.52 1.06.99 1.53.47.47.96.77 1.53.99.509.198 1.09.332 1.943.372.853.039 1.126.048 3.297.048 2.17 0 2.444-.01 3.297-.048.852-.04 1.433-.174 1.942-.372a5.5 5.5 0 0 0 1.53-.99 5.5 5.5 0 0 0 .99-1.53c.198-.509.332-1.09.372-1.943.039-.853.048-1.126.048-3.297 0-2.17-.01-2.444-.048-3.297-.04-.852-.174-1.433-.372-1.942a5.5 5.5 0 0 0-.99-1.53 5.5 5.5 0 0 0-1.53-.99c-.509-.198-1.09-.332-1.943-.372C10.444.01 10.171 0 8 0m0 3.892A4.098 4.098 0 1 0 8 12.09 4.098 4.098 0 0 0 8 3.892m0 1.441a2.657 2.657 0 1 1 0 5.314 2.657 2.657 0 0 1 0-5.314m4.27-2.564a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92" /></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61586554286960" class="cn-social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <svg viewBox="0 0 16 16"><path d="M8.94 6.658V4.542c0-.546.363-.673.618-.673h1.578V1.313L8.966 1.304c-2.41 0-2.958 1.805-2.958 2.96v2.394H4v2.967h2.008V16h2.932V9.625h1.98l.294-2.967z" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="cn-form-box">
+            <h2>Send a Message</h2>
+            <p>Tell us about your project, and we'll get back to you shortly.</p>
+
+            {% if messages %}
+            <div class="cn-messages">
+                {% for message in messages %}
+                <div class="cn-message {% if message.tags == 'error' %}cn-message--error{% else %}cn-message--success{% endif %}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form class="cn-form" method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="text" name="company" placeholder="Company Name (Optional)">
+                <textarea name="message" placeholder="How can we help you?" required></textarea>
+                <button class="cn-form__btn" type="submit">Send Message</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     MAP SECTION
+     ════════════════════════════════════════════════════ -->
+<section class="cn-map-section" aria-label="Location Map">
+    <div class="cn-map-inner">
+        <div class="cn-map-header">
+            <div class="cn-map-header__info">
+                <h2>Our Location</h2>
+                <p>We welcome scheduled in-person consultations.</p>
+            </div>
+            <a class="cn-map-link" href="https://www.google.com/maps/place/Brandlumeo/@11.5229742,75.6259868,3254m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3ba68900537dc09f:0x40baede41553b26c!8m2!3d11.5229744!4d75.6362866!16s%2Fg%2F11n43qz6_r?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+                Open in Google Maps
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+        </div>
+        <iframe class="cn-map-frame" src="https://www.google.com/maps?q=11.5229744,75.6362866&z=15&output=embed" title="Brandlumeo location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+</section>
+
+</main>
+{% endblock %}

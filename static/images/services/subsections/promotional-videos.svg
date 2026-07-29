@@ -1,0 +1,32 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#166534"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1200 180) rotate(130) scale(680 520)">
+      <stop stop-color="#84CC16" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#84CC16" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+
+  <circle cx="482" cy="200" r="150" fill="#84CC16" fill-opacity="0.18"/>
+  <circle cx="1027" cy="375" r="132" fill="#ECFCCB" fill-opacity="0.2"/>
+
+  <rect x="110" y="150" width="1380" height="600" rx="30" fill="white" fill-opacity="0.06" stroke="white" stroke-opacity="0.16"/>
+  <rect x="170" y="220" width="380" height="14" rx="7" fill="#ECFCCB" fill-opacity="0.85"/>
+  <rect x="170" y="258" width="320" height="10" rx="5" fill="#ECFCCB" fill-opacity="0.6"/>
+
+  <rect x="170" y="335" width="280" height="280" rx="28" fill="white" fill-opacity="0.08"/>
+  <rect x="500" y="335" width="920" height="126" rx="24" fill="white" fill-opacity="0.08"/>
+  <rect x="500" y="489" width="440" height="126" rx="24" fill="white" fill-opacity="0.08"/>
+  <rect x="980" y="489" width="440" height="126" rx="24" fill="white" fill-opacity="0.08"/>
+
+  <path d="M248 417L312 481L382 389" stroke="#ECFCCB" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="170" y="660" width="140" height="52" rx="26" fill="#84CC16" fill-opacity="0.38"/>
+  <rect x="330" y="660" width="115" height="52" rx="26" fill="white" fill-opacity="0.18"/>
+
+  <text x="170" y="828" fill="#F8FAFC" font-size="56" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Promotional Videos</text>
+</svg>

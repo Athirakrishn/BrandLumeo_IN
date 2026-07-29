@@ -1,0 +1,24 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <h1>Thank You</h1>
+    <p>Your message has been received. Our team will reach out within 24 hours.</p>
+</section>
+
+<section class="thank-you-section">
+    <div class="container thank-you-card">
+        <h2>We appreciate your inquiry.</h2>
+        <p>
+            In the meantime, you can explore our latest case studies or learn more about our services.
+        </p>
+        <div class="hero-actions">
+            <a href="{% url 'portfolio' %}" class="btn">View Case Studies</a>
+            <a href="{% url 'services' %}" class="btn btn-secondary">Explore Services</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

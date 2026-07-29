@@ -1,0 +1,1015 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4E32TBWQW7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4E32TBWQW7');
+    </script>
+
+    <title>{% block title %}BrandLumeo LLP{% endblock %}</title>
+
+    <meta name="google-site-verification" content="4W961rdZr8RWP5VJCDWml2stw9r7wu-cI7BkfmWGeKs" />
+
+    <meta name="description"
+        content="{% block meta_description %}BrandLumeo LLP is a premium digital marketing agency in Kerala and UAE offering SEO, social media marketing, Google Ads and web development.{% endblock %}">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="{% block canonical %}{{ request.build_absolute_uri }}{% endblock %}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2.2">
+
+    <!-- Open Graph (Facebook/WhatsApp/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BrandLumeo LLP">
+    <meta property="og:title" content="{% block og_title %}BrandLumeo LLP{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}Premium digital marketing agency in Kerala and UAE.{% endblock %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image"
+        content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/og-brandlumeo.jpg' %}{% endblock %}">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}BrandLumeo LLP{% endblock %}">
+    <meta name="twitter:description"
+        content="{% block twitter_description %}Premium digital marketing agency in Kerala and UAE.{% endblock %}">
+    <meta name="twitter:image"
+        content="{% block twitter_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/og-brandlumeo.jpg' %}{% endblock %}">
+
+    <!-- Local Business Schema -->
+    {% block schema %}
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "BrandLumeo LLP",
+    "url": "https://brandlumeo.com",
+    "telephone": "+91 9746457565",
+    "email": "info@brandlumeo.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Payyoli - Perambra Rd",
+      "addressLocality": "Kozhikode",
+      "addressRegion": "Kerala",
+      "postalCode": "673522",
+      "addressCountry": "IN"
+    },
+    "areaServed": ["Kerala", "UAE"],
+    "description": "Digital marketing agency providing SEO, social media marketing, Google Ads, web development and branding.",
+    "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo-icon.png' %}"
+  }
+  </script>
+    {% endblock %}
+
+    <style>
+        /* Mobile specific fixes for footer and navbar */
+        @media (max-width: 768px) {
+            .navbar {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                transform: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                border-radius: 0 !important;
+                margin: 0 !important;
+                padding: 8px 16px !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                flex-wrap: nowrap !important;
+                background-color: rgba(255, 255, 255, 0.5) !important;
+                backdrop-filter: blur(12px) !important;
+                -webkit-backdrop-filter: blur(12px) !important;
+                border: none !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+                z-index: 1000 !important;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+                margin-bottom: 40px !important;
+            }
+
+            .footer-meta {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+                padding-bottom: 30px !important;
+            }
+
+            .footer-meta-item {
+                text-align: center !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 8px !important;
+            }
+
+            .footer-meta-item h5 {
+                margin-bottom: 0 !important;
+            }
+
+            .footer-social {
+                justify-content: center !important;
+            }
+
+            .footer-bottom-inner {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 16px !important;
+            }
+
+            .footer-legal {
+                justify-content: center !important;
+                flex-wrap: wrap !important;
+                gap: 16px !important;
+            }
+
+            .site-footer {
+                padding: 40px 0 0 !important;
+                text-align: center !important;
+            }
+
+            .site-footer .logo {
+                justify-content: center !important;
+            }
+
+            .site-footer ul {
+                padding: 0 !important;
+                list-style: none !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 8px !important;
+            }
+        }
+
+        /* Global Responsiveness Catch-All */
+        html,
+        body {
+            max-width: 100vw;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        img,
+        svg,
+        video,
+        canvas,
+        iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Generic catch-all for missing mobile grid stacking on small screens */
+        @media (max-width: 768px) {
+            .grid:not(.grid-cols-2):not(.grid-cols-3):not(.grid-cols-4):not([class*="grid-cols"]) {
+                grid-template-columns: 1fr !important;
+            }
+
+            .flex-row {
+                flex-direction: column !important;
+            }
+
+            /* Add horizontal padding to prevent text touching edges — but NOT on hero sections */
+            main {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                box-sizing: border-box;
+            }
+
+            /* Hero sections must be full-width edge-to-edge with zero side gaps */
+            .sv-hero,
+            .pf-hero,
+            .cn-hero,
+            section[role="banner"] {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+
+    <!-- ===== PRELOADER ===== -->
+    <div class="site-preloader" id="site-preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo-wrap">
+                <img src="{% static 'images/logo-icon.png' %}" alt="Brandlumeo Logo">
+            </div>
+            <div class="preloader-brand">Brandlumeo</div>
+            <div class="preloader-tagline">Digital Marketing Agency</div>
+        </div>
+    </div>
+    <script>
+        // Only show preloader once per session
+        if (sessionStorage.getItem("brandlumeo_preloader_shown")) {
+            document.getElementById("site-preloader").style.display = "none";
+        } else {
+            sessionStorage.setItem("brandlumeo_preloader_shown", "true");
+        }
+    </script>
+
+    <nav class="navbar">
+
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'images/logo-icon.png' %}" alt="Brandlumeo Logo">
+        </a>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+    </nav>
+
+    <!-- Fullscreen Menu -->
+    <div class="nav-menu-modal" id="nav-menu-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="nav-modal-backdrop" id="nav-modal-backdrop"></div>
+        <div class="nav-modal-content">
+
+            <!-- Top bar: logo + close -->
+            <div class="nav-modal-header">
+                <a href="{% url 'home' %}" class="logo modal-logo">
+                    <img src="{% static 'images/logo-icon.png' %}" alt="Brandlumeo Logo">
+                </a>
+                <button class="nav-modal-close" id="nav-modal-close" aria-label="Close Menu">
+                    <span class="close-line"></span>
+                    <span class="close-line"></span>
+                </button>
+            </div>
+
+            <!-- Center: navigation links -->
+            <nav class="nav-modal-center">
+                <ul class="nav-modal-links">
+                    <li><a href="{% url 'home' %}" class="nav-modal-link"><span class="nav-link-text">Home</span><span
+                                class="nav-link-arrow">→</span></a></li>
+                    <li><a href="{% url 'services' %}" class="nav-modal-link"><span
+                                class="nav-link-text">Services</span><span class="nav-link-arrow">→</span></a></li>
+                    <li><a href="{% url 'about' %}" class="nav-modal-link"><span class="nav-link-text">About</span><span
+                                class="nav-link-arrow">→</span></a></li>
+                    <li><a href="{% url 'portfolio' %}" class="nav-modal-link"><span
+                                class="nav-link-text">Portfolio</span><span class="nav-link-arrow">→</span></a></li>
+                    <li><a href="{% url 'blog' %}" class="nav-modal-link"><span class="nav-link-text">Blog</span><span
+                                class="nav-link-arrow">→</span></a></li>
+                    <li><a href="{% url 'contact' %}" class="nav-modal-link"><span
+                                class="nav-link-text">Contact</span><span class="nav-link-arrow">→</span></a></li>
+                </ul>
+            </nav>
+
+            <!-- Bottom: contact info -->
+            <div class="nav-modal-footer">
+                <div class="nav-modal-footer-col">
+                    <a href="mailto:info@brandlumeo.com">info@brandlumeo.com</a>
+                    <a href="tel:+919746457565">+91 9746 457 565</a>
+                </div>
+                <div class="nav-modal-footer-col nav-modal-social-row">
+                    <a href="https://www.linkedin.com/company/111710517/admin/dashboard/" target="_blank"
+                        rel="noopener noreferrer">Li</a>
+                    <a href="https://www.instagram.com/brandlumeo_/" target="_blank" rel="noopener noreferrer">Ig</a>
+                    <a href="https://www.facebook.com/profile.php?id=61586554286960" target="_blank"
+                        rel="noopener noreferrer">Fb</a>
+                </div>
+                <div class="nav-modal-footer-col">
+                    <span>&copy; 2026 Brandlumeo LLP</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <main>
+        {% if messages %}
+        <div class="container messages-container" style="padding-top: 2rem;">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }}"
+                style="padding: 1rem; border-radius: 4px; margin-bottom: 1rem; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="{% url 'home' %}" class="logo" style="margin-bottom: 16px; display: inline-flex;">
+                    <img src="{% static 'images/logo-icon.png' %}" alt="Brandlumeo Logo">
+                </a>
+                <p>Premium digital marketing partner for growth-minded brands.</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="{% url 'services' %}">SEO &amp; Content</a></li>
+                    <li><a href="{% url 'services' %}">Paid Media</a></li>
+                    <li><a href="{% url 'services' %}">Social Media</a></li>
+                    <li><a href="{% url 'services' %}">Brand Strategy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="{% url 'portfolio' %}">Case Studies</a></li>
+                    <li><a href="{% url 'blog' %}">Growth Playbooks</a></li>
+                    <li><a href="{% url 'blog' %}">Marketing Insights</a></li>
+                    <li><a href="{% url 'contact' %}">FAQs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Payyoli - Perambra Rd, Kozhikode, Kerala 673522</p>
+                <p><a href="mailto:info@brandlumeo.com">info@brandlumeo.com</a></p>
+                <p><a href="tel:+919746457565">+91 9746457565</a></p>
+            </div>
+        </div>
+        <div class="container footer-meta">
+            <div class="footer-meta-item">
+                <h5>Working Hours</h5>
+                <p>Mon - Sat, 9:00 AM to 6:00 PM IST</p>
+            </div>
+            <div class="footer-meta-item">
+                <h5>Client Support</h5>
+                <p>Average response time within 2 business hours</p>
+            </div>
+            <div class="footer-meta-item">
+                <h5>Follow</h5>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/111710517/admin/dashboard/" class="social-link"
+                        target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zM4.943 13.5V6.169H2.542V13.5zM3.743 5.165c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.208 2.4 3.917c0 .694.521 1.248 1.327 1.248zm3.181 8.335h2.401V9.409c0-.219.016-.438.082-.594.178-.438.582-.891 1.261-.891.89 0 1.245.672 1.245 1.656V13.5h2.401V9.303c0-2.247-1.2-3.293-2.8-3.293-1.29 0-1.845.71-2.165 1.21h.016v-1.051H6.924c.03.678 0 7.331 0 7.331z" />
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.instagram.com/brandlumeo_/" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
+                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M8 1.441c2.134 0 2.389.008 3.233.046.78.036 1.204.166 1.485.275.372.145.637.318.915.596.278.278.451.543.596.915.109.281.239.705.275 1.485.038.844.046 1.099.046 3.233s-.008 2.389-.046 3.233c-.036.78-.166 1.204-.275 1.485a4.06 4.06 0 0 1-.596.915 4.06 4.06 0 0 1-.915.596c-.281.109-.705.239-1.485.275-.844.038-1.099.046-3.233.046s-2.389-.008-3.233-.046c-.78-.036-1.204-.166-1.485-.275a4.06 4.06 0 0 1-.915-.596 4.06 4.06 0 0 1-.596-.915c-.109-.281-.239-.705-.275-1.485C1.45 10.38 1.442 10.125 1.442 7.99s.008-2.389.046-3.233c.036-.78.166-1.204.275-1.485.145-.372.318-.637.596-.915.278-.278.543-.451.915-.596.281-.109.705-.239 1.485-.275C5.611 1.449 5.866 1.441 8 1.441m0-1.441C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a5.5 5.5 0 0 0-1.98 1.29A5.5 5.5 0 0 0 .42 3.69c-.198.509-.332 1.09-.372 1.943C.01 6.486 0 6.759 0 8.93c0 2.17.01 2.444.048 3.297.04.852.174 1.433.372 1.942.22.57.52 1.06.99 1.53.47.47.96.77 1.53.99.509.198 1.09.332 1.943.372.853.039 1.126.048 3.297.048 2.17 0 2.444-.01 3.297-.048.852-.04 1.433-.174 1.942-.372a5.5 5.5 0 0 0 1.53-.99 5.5 5.5 0 0 0 .99-1.53c.198-.509.332-1.09.372-1.943.039-.853.048-1.126.048-3.297 0-2.17-.01-2.444-.048-3.297-.04-.852-.174-1.433-.372-1.942a5.5 5.5 0 0 0-.99-1.53 5.5 5.5 0 0 0-1.53-.99c-.509-.198-1.09-.332-1.943-.372C10.444.01 10.171 0 8 0m0 3.892A4.098 4.098 0 1 0 8 12.09 4.098 4.098 0 0 0 8 3.892m0 1.441a2.657 2.657 0 1 1 0 5.314 2.657 2.657 0 0 1 0-5.314m4.27-2.564a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92" />
+                        </svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61586554286960" class="social-link" target="_blank"
+                        rel="noopener noreferrer">
+                        <svg viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                                d="M8.94 6.658V4.542c0-.546.363-.673.618-.673h1.578V1.313L8.966 1.304c-2.41 0-2.958 1.805-2.958 2.96v2.394H4v2.967h2.008V16h2.932V9.625h1.98l.294-2.967z" />
+                        </svg>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 Brandlumeo. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="{% url 'privacy' %}">Privacy</a>
+                    <a href="{% url 'terms' %}">Terms</a>
+                    <a href="{% url 'cookies' %}">Cookies</a>
+                    <a href="#" id="cookie-settings-link">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-consent" id="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
+        <div class="container cookie-consent-inner">
+            <div class="cookie-consent-copy">
+                <p>
+                    We use cookies for essential functionality and analytics. See our
+                    <a href="{% url 'cookies' %}">Cookie Policy</a>.
+                </p>
+            </div>
+            <div class="cookie-consent-actions">
+                <button type="button" class="btn btn-secondary cookie-btn" id="cookie-decline">Decline</button>
+                <button type="button" class="btn cookie-btn" id="cookie-accept">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Hamburger Modal Menu Handler
+            const toggle = document.getElementById("nav-toggle");
+            const modal = document.getElementById("nav-menu-modal");
+            const closeBtn = document.getElementById("nav-modal-close");
+            const backdrop = document.getElementById("nav-modal-backdrop");
+            const modalLinks = document.querySelectorAll(".nav-modal-links a");
+
+            if (toggle && modal) {
+                const openMenu = function () {
+                    modal.classList.add("is-open");
+                    modal.setAttribute("aria-hidden", "false");
+                    toggle.setAttribute("aria-expanded", "true");
+                    document.body.classList.add("menu-modal-open");
+                };
+
+                const closeMenu = function () {
+                    modal.classList.remove("is-open");
+                    modal.setAttribute("aria-hidden", "true");
+                    toggle.setAttribute("aria-expanded", "false");
+                    document.body.classList.remove("menu-modal-open");
+                };
+
+                toggle.addEventListener("click", openMenu);
+                if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+                if (backdrop) backdrop.addEventListener("click", closeMenu);
+
+                modalLinks.forEach(function (link) {
+                    link.addEventListener("click", closeMenu);
+                });
+            }
+
+            // Navbar Scroll Handler
+            const navbar = document.querySelector(".navbar");
+            const hero = document.querySelector(".hl-hero, .hero-scroll-container, .sv-hero, .ab-hero, .pf-hero, .cn-hero, .page-header, .service-detail-hero, .blog-hero");
+
+            if (navbar) {
+                if (hero) {
+                    const handleScroll = function () {
+                        const heroHeight = hero.offsetHeight > 0 ? hero.offsetHeight : (window.innerHeight * 2);
+                        const navbarHeight = navbar.offsetHeight > 0 ? navbar.offsetHeight : 80;
+                        const threshold = heroHeight - navbarHeight;
+                        const scrollPosition = window.scrollY;
+
+                        if (scrollPosition >= threshold) {
+                            navbar.classList.add("is-scrolled");
+                        } else {
+                            navbar.classList.remove("is-scrolled");
+                        }
+                    };
+
+                    window.addEventListener("scroll", handleScroll, { passive: true });
+                    handleScroll();
+                } else {
+                    navbar.classList.add("is-scrolled");
+                }
+            }
+
+            const banner = document.getElementById("cookie-consent");
+            const acceptBtn = document.getElementById("cookie-accept");
+            const declineBtn = document.getElementById("cookie-decline");
+            const settingsLink = document.getElementById("cookie-settings-link");
+            const consentKey = "brandlumeo_cookie_consent";
+
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const revealSelector = [
+                "main > section",
+                ".section-heading",
+                ".service-card",
+                ".process-card",
+                ".value-card",
+                ".industry-card",
+                ".testimonial-card",
+                ".capability-card",
+                ".engagement-card",
+                ".governance-card",
+                ".home-faq-card",
+                ".portfolio-card",
+                ".blog-card",
+                ".deep-dive-card",
+                ".deliverable-card",
+                ".portfolio-social-card",
+                ".series-card",
+                ".resource-card",
+                ".expert-note-card",
+                ".results-card",
+                ".timeline-card",
+                ".team-card",
+                ".cert-card",
+                ".faq-card",
+                ".insights-card",
+                ".featured-card",
+                ".topic-card",
+                ".legal-card",
+                ".contact-item",
+                ".contact-form-box",
+                ".thank-you-card"
+            ].join(", ");
+
+            const revealElements = Array.from(new Set(document.querySelectorAll(revealSelector)));
+            revealElements.forEach(function (element, index) {
+                element.classList.add("reveal-on-scroll");
+                element.style.setProperty("--reveal-delay", ((index % 6) * 70) + "ms");
+            });
+
+            if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+                revealElements.forEach(function (element) {
+                    element.classList.add("is-visible");
+                });
+            } else {
+                const revealObserver = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0,
+                    rootMargin: "0px 0px -5% 0px"
+                });
+
+                revealElements.forEach(function (element) {
+                    revealObserver.observe(element);
+                });
+            }
+
+            const roiCalculatorForm = document.getElementById("roi-calculator-form");
+            if (roiCalculatorForm) {
+                const roiOutputs = {
+                    clicks: document.getElementById("roi-clicks"),
+                    leads: document.getElementById("roi-leads"),
+                    customers: document.getElementById("roi-customers"),
+                    revenue: document.getElementById("roi-revenue"),
+                    roas: document.getElementById("roi-roas")
+                };
+
+                const readNumber = function (fieldName, fallback) {
+                    const input = roiCalculatorForm.elements[fieldName];
+                    if (!input) {
+                        return fallback;
+                    }
+                    const value = parseFloat(input.value);
+                    return Number.isFinite(value) ? value : fallback;
+                };
+
+                const formatMoney = function (value) {
+                    return new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        maximumFractionDigits: 0
+                    }).format(value);
+                };
+
+                const formatNumber = function (value) {
+                    return new Intl.NumberFormat("en-US", {
+                        maximumFractionDigits: 0
+                    }).format(value);
+                };
+
+                const updateRoiProjection = function () {
+                    const monthlyBudget = Math.max(readNumber("monthly_budget", 0), 0);
+                    const avgCpc = Math.max(readNumber("avg_cpc", 1), 0.1);
+                    const landingCv = Math.max(readNumber("landing_cv", 0), 0) / 100;
+                    const closeRate = Math.max(readNumber("close_rate", 0), 0) / 100;
+                    const dealValue = Math.max(readNumber("deal_value", 0), 0);
+
+                    const clicks = monthlyBudget / avgCpc;
+                    const leads = clicks * landingCv;
+                    const customers = leads * closeRate;
+                    const revenue = customers * dealValue;
+                    const roas = monthlyBudget > 0 ? revenue / monthlyBudget : 0;
+
+                    roiOutputs.clicks.textContent = formatNumber(clicks);
+                    roiOutputs.leads.textContent = formatNumber(leads);
+                    roiOutputs.customers.textContent = formatNumber(customers);
+                    roiOutputs.revenue.textContent = formatMoney(revenue);
+                    roiOutputs.roas.textContent = "ROAS: " + roas.toFixed(2) + "x";
+                };
+
+                roiCalculatorForm.addEventListener("input", updateRoiProjection);
+                updateRoiProjection();
+            }
+
+            const portfolioFilterButtons = Array.from(document.querySelectorAll("[data-portfolio-filter]"));
+            const portfolioFilterTargets = Array.from(document.querySelectorAll("[data-portfolio-category]"));
+
+            if (portfolioFilterButtons.length && portfolioFilterTargets.length) {
+                const applyPortfolioFilter = function (filterValue) {
+                    portfolioFilterButtons.forEach(function (button) {
+                        const isActive = button.getAttribute("data-portfolio-filter") === filterValue;
+                        button.classList.toggle("active", isActive);
+                        button.setAttribute("aria-pressed", String(isActive));
+                    });
+
+                    portfolioFilterTargets.forEach(function (item) {
+                        if (filterValue === "all") {
+                            item.classList.remove("is-filter-hidden");
+                            return;
+                        }
+                        const categories = (item.getAttribute("data-portfolio-category") || "").split(" ");
+                        const isMatch = categories.includes(filterValue);
+                        item.classList.toggle("is-filter-hidden", !isMatch);
+                    });
+                };
+
+                portfolioFilterButtons.forEach(function (button) {
+                    button.addEventListener("click", function () {
+                        applyPortfolioFilter(button.getAttribute("data-portfolio-filter") || "all");
+                    });
+                });
+            }
+
+            const caseTabs = Array.from(document.querySelectorAll("[data-case-trigger]"));
+            const casePanels = Array.from(document.querySelectorAll("[data-case-panel]"));
+
+            if (caseTabs.length && casePanels.length) {
+                const activateCasePanel = function (targetPanel) {
+                    caseTabs.forEach(function (tab) {
+                        const isActive = tab.getAttribute("data-case-trigger") === targetPanel;
+                        tab.classList.toggle("active", isActive);
+                        tab.setAttribute("aria-pressed", String(isActive));
+                    });
+
+                    casePanels.forEach(function (panel) {
+                        const isActive = panel.getAttribute("data-case-panel") === targetPanel;
+                        panel.classList.toggle("active", isActive);
+                    });
+                };
+
+                caseTabs.forEach(function (tab) {
+                    tab.addEventListener("click", function () {
+                        activateCasePanel(tab.getAttribute("data-case-trigger") || "");
+                    });
+                });
+            }
+
+            const hScrollSection = document.querySelector("[data-h-scroll-section]");
+            const hScrollTrack = document.querySelector("[data-h-scroll-track]");
+            const hScrollProgress = document.querySelector("[data-h-scroll-progress]");
+            const hScrollCards = hScrollTrack ? Array.from(hScrollTrack.querySelectorAll(".h-scroll-card")) : [];
+            const canUseDesktopHScroll = hScrollSection &&
+                hScrollTrack &&
+                !prefersReducedMotion &&
+                window.matchMedia("(min-width: 901px)").matches;
+
+            if (canUseDesktopHScroll) {
+                let rafId = null;
+                let maxTranslate = 0;
+                let currentOffset = 0;
+                let targetOffset = 0;
+
+                const clamp = function (value, min, max) {
+                    return Math.min(max, Math.max(min, value));
+                };
+
+                const measureTrack = function () {
+                    const viewportWidth = hScrollSection.clientWidth;
+                    maxTranslate = Math.max(0, hScrollTrack.scrollWidth - viewportWidth);
+                };
+
+                const updateTrackPosition = function () {
+                    rafId = null;
+                    const sectionRect = hScrollSection.getBoundingClientRect();
+                    const totalScroll = Math.max(1, hScrollSection.offsetHeight - window.innerHeight);
+                    const progressed = clamp(-sectionRect.top / totalScroll, 0, 1);
+                    const easedProgress = 1 - Math.pow(1 - progressed, 1.25);
+                    targetOffset = easedProgress * maxTranslate;
+                    currentOffset += (targetOffset - currentOffset) * 0.14;
+                    hScrollTrack.style.transform = "translate3d(" + (-currentOffset).toFixed(1) + "px, 0, 0)";
+
+                    if (hScrollProgress) {
+                        hScrollProgress.style.width = (progressed * 100).toFixed(1) + "%";
+                    }
+
+                    const viewportCenter = window.innerWidth / 2;
+                    let activeCard = null;
+                    let smallestDistance = Infinity;
+                    hScrollCards.forEach(function (card) {
+                        const rect = card.getBoundingClientRect();
+                        const cardCenter = rect.left + (rect.width / 2);
+                        const distance = Math.abs(cardCenter - viewportCenter);
+                        if (distance < smallestDistance) {
+                            smallestDistance = distance;
+                            activeCard = card;
+                        }
+                    });
+
+                    hScrollCards.forEach(function (card) {
+                        card.classList.toggle("is-active", card === activeCard);
+                    });
+
+                    if (Math.abs(targetOffset - currentOffset) > 0.4) {
+                        queueUpdate();
+                    }
+                };
+
+                const queueUpdate = function () {
+                    if (rafId !== null) {
+                        return;
+                    }
+                    rafId = window.requestAnimationFrame(updateTrackPosition);
+                };
+
+                measureTrack();
+                queueUpdate();
+
+                window.addEventListener("scroll", queueUpdate, { passive: true });
+                window.addEventListener("resize", function () {
+                    measureTrack();
+                    queueUpdate();
+                });
+            }
+
+            const teamScrollWrap = document.querySelector("[data-team-scroll-wrap]");
+            const teamScrollTrack = teamScrollWrap ? teamScrollWrap.querySelector(".team-scroll-track") : null;
+            const teamScrollProgress = document.querySelector("[data-team-scroll-progress]");
+            const teamCards = teamScrollWrap ? Array.from(teamScrollWrap.querySelectorAll(".team-scroll-card")) : [];
+
+            if (teamScrollWrap && teamScrollTrack && teamCards.length) {
+                teamScrollWrap.scrollLeft = 0;
+                const desktopTeamInteraction = window.matchMedia("(min-width: 901px)");
+                const teamCardGap = 4;
+
+                const measureTeamCardWidth = function () {
+                    if (desktopTeamInteraction.matches) {
+                        const totalGaps = 6 * teamCardGap;
+                        const cardWidth = (teamScrollWrap.clientWidth - totalGaps) / 7;
+                        teamScrollWrap.style.setProperty("--team-card-width", cardWidth.toFixed(2) + "px");
+                        const trackWidth = (teamCards.length * cardWidth) + ((teamCards.length - 1) * teamCardGap);
+                        teamScrollTrack.style.width = trackWidth.toFixed(2) + "px";
+                    } else {
+                        teamScrollWrap.style.removeProperty("--team-card-width");
+                        teamScrollTrack.style.removeProperty("width");
+                    }
+                };
+
+                const updateTeamScrollState = function () {
+                    const maxScroll = Math.max(1, teamScrollWrap.scrollWidth - teamScrollWrap.clientWidth);
+                    const progress = Math.min(1, Math.max(0, teamScrollWrap.scrollLeft / maxScroll));
+
+                    if (teamScrollProgress) {
+                        teamScrollProgress.style.width = (progress * 100).toFixed(1) + "%";
+                    }
+
+                    const viewportCenter = teamScrollWrap.getBoundingClientRect().left + (teamScrollWrap.clientWidth / 2);
+                    let activeCard = null;
+                    let smallestDistance = Infinity;
+
+                    teamCards.forEach(function (card) {
+                        const rect = card.getBoundingClientRect();
+                        const center = rect.left + (rect.width / 2);
+                        const distance = Math.abs(center - viewportCenter);
+                        if (distance < smallestDistance) {
+                            smallestDistance = distance;
+                            activeCard = card;
+                        }
+                    });
+
+                    teamCards.forEach(function (card) {
+                        card.classList.toggle("is-active", card === activeCard);
+                    });
+                };
+
+                measureTeamCardWidth();
+                updateTeamScrollState();
+                teamScrollWrap.addEventListener("scroll", updateTeamScrollState, { passive: true });
+                window.addEventListener("resize", function () {
+                    measureTeamCardWidth();
+                    updateTeamScrollState();
+                });
+                let autoTeamRaf = null;
+                let autoDirection = 1;
+                let autoLastTs = 0;
+                let autoPauseUntil = 0;
+                let autoPosition = teamScrollWrap.scrollLeft;
+
+                const pauseTeamAutoScroll = function (durationMs) {
+                    const now = window.performance && typeof window.performance.now === "function"
+                        ? window.performance.now()
+                        : Date.now();
+                    autoPauseUntil = now + durationMs;
+                };
+
+                const autoTeamStep = function (ts) {
+                    autoTeamRaf = null;
+                    const maxScroll = Math.max(0, teamScrollWrap.scrollWidth - teamScrollWrap.clientWidth);
+
+                    if (!desktopTeamInteraction.matches || maxScroll <= 0) {
+                        autoLastTs = ts;
+                        autoTeamRaf = window.requestAnimationFrame(autoTeamStep);
+                        return;
+                    }
+
+                    if (autoPosition > maxScroll) {
+                        autoPosition = maxScroll;
+                    }
+
+                    const deltaMs = autoLastTs ? (ts - autoLastTs) : 16;
+                    autoLastTs = ts;
+
+                    if (ts < autoPauseUntil) {
+                        autoTeamRaf = window.requestAnimationFrame(autoTeamStep);
+                        return;
+                    }
+
+                    const speedPxPerSecond = 58;
+                    let nextScrollLeft = autoPosition + (autoDirection * speedPxPerSecond * (deltaMs / 1000));
+
+                    if (nextScrollLeft >= maxScroll) {
+                        nextScrollLeft = maxScroll;
+                        autoDirection = -1;
+                        autoPauseUntil = ts + 700;
+                    } else if (nextScrollLeft <= 0) {
+                        nextScrollLeft = 0;
+                        autoDirection = 1;
+                        autoPauseUntil = ts + 700;
+                    }
+
+                    autoPosition = nextScrollLeft;
+                    teamScrollWrap.scrollLeft = Math.round(autoPosition);
+                    updateTeamScrollState();
+                    autoTeamRaf = window.requestAnimationFrame(autoTeamStep);
+                };
+
+                teamScrollWrap.addEventListener("mouseenter", function () {
+                    pauseTeamAutoScroll(1800);
+                });
+                teamScrollWrap.addEventListener("mouseleave", function () {
+                    pauseTeamAutoScroll(500);
+                });
+                teamScrollWrap.addEventListener("focusin", function () {
+                    pauseTeamAutoScroll(1800);
+                });
+                teamScrollWrap.addEventListener("pointerdown", function () {
+                    pauseTeamAutoScroll(1800);
+                });
+
+                teamScrollWrap.addEventListener("wheel", function (event) {
+                    if (!desktopTeamInteraction.matches) {
+                        return;
+                    }
+
+                    const maxScroll = teamScrollWrap.scrollWidth - teamScrollWrap.clientWidth;
+                    if (maxScroll <= 0) {
+                        return;
+                    }
+
+                    const delta = Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+                    const nextScrollLeft = teamScrollWrap.scrollLeft + delta;
+                    const isWithinBounds = nextScrollLeft >= 0 && nextScrollLeft <= maxScroll;
+
+                    if (isWithinBounds) {
+                        event.preventDefault();
+                        teamScrollWrap.scrollLeft = Math.min(maxScroll, Math.max(0, nextScrollLeft));
+                        autoPosition = teamScrollWrap.scrollLeft;
+                        pauseTeamAutoScroll(1400);
+                        updateTeamScrollState();
+                    }
+                }, { passive: false });
+
+                autoTeamRaf = window.requestAnimationFrame(autoTeamStep);
+            }
+
+            if (!banner || !acceptBtn || !declineBtn) {
+                return;
+            }
+
+            function safeGet(key) {
+                try {
+                    return localStorage.getItem(key);
+                } catch (err) {
+                    return null;
+                }
+            }
+
+            function safeSet(key, value) {
+                try {
+                    localStorage.setItem(key, value);
+                } catch (err) {
+                    /* ignore storage failures */
+                }
+            }
+
+            function safeRemove(key) {
+                try {
+                    localStorage.removeItem(key);
+                } catch (err) {
+                    /* ignore storage failures */
+                }
+            }
+
+            const storedChoice = safeGet(consentKey);
+
+            function applyConsent(choice) {
+                safeSet(consentKey, choice);
+                document.documentElement.setAttribute("data-cookie-consent", choice);
+                banner.classList.remove("show");
+                document.body.classList.remove("cookie-consent-visible");
+            }
+
+            if (storedChoice === "accepted" || storedChoice === "declined") {
+                document.documentElement.setAttribute("data-cookie-consent", storedChoice);
+                document.body.classList.remove("cookie-consent-visible");
+            } else {
+                banner.classList.add("show");
+                document.body.classList.add("cookie-consent-visible");
+            }
+
+            acceptBtn.addEventListener("click", function () {
+                applyConsent("accepted");
+            });
+
+            declineBtn.addEventListener("click", function () {
+                applyConsent("declined");
+            });
+
+            if (settingsLink) {
+                settingsLink.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    safeRemove(consentKey);
+                    document.documentElement.removeAttribute("data-cookie-consent");
+                    banner.classList.add("show");
+                    document.body.classList.add("cookie-consent-visible");
+                });
+            }
+        });
+    </script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </button>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919746457565" class="floating-whatsapp" target="_blank"
+        aria-label="Chat with us on WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M16 2a13.92 13.92 0 0 0-11.87 21.36L2 30l6.77-2.11A13.88 13.88 0 0 0 16 30c7.67 0 13.9-6.23 13.9-13.9S23.67 2 16 2zm0 25.54a11.66 11.66 0 0 1-5.91-1.6l-.42-.25-4.4 1.36 1.38-4.28-.27-.4A11.58 11.58 0 0 1 4.31 15.9c0-6.42 5.23-11.64 11.68-11.64A11.68 11.68 0 0 1 27.67 15.9 11.69 11.69 0 0 1 16 27.54zm6.41-8.76c-.35-.18-2.08-1.03-2.4-1.15-.32-.12-.56-.18-.79.18-.23.36-.91 1.15-1.11 1.39-.21.24-.42.27-.77.09-2.31-1.12-4.07-2.44-5.63-4.9-.17-.27-.02-.42.16-.6.16-.16.35-.41.53-.61.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.79-1.91-1.08-2.61-.28-.69-.57-.6-.79-.61h-.67c-.24 0-.62.09-.94.45s-1.23 1.2-1.23 2.94c0 1.74 1.26 3.42 1.44 3.66.18.24 2.5 3.82 6.06 5.35.85.37 1.51.58 2.03.75.85.27 1.62.23 2.23.14.69-.1 2.08-.85 2.37-1.67.29-.82.29-1.52.2-1.67-.08-.14-.32-.23-.67-.4z"
+                fill="currentColor" />
+        </svg>
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const scrollToTopBtn = document.getElementById("scroll-to-top");
+
+            // Show button when scrolled down
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 500) {
+                    scrollToTopBtn.classList.add("visible");
+                } else {
+                    scrollToTopBtn.classList.remove("visible");
+                }
+            });
+
+            // Scroll to top on click
+            scrollToTopBtn.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });
+
+        // Preloader Logic
+        window.addEventListener("load", function () {
+            const preloader = document.getElementById("site-preloader");
+            if (preloader) {
+                // Short delay then fast fade out
+                setTimeout(function () {
+                    preloader.classList.add("is-hidden");
+                    setTimeout(function () {
+                        preloader.style.display = "none";
+                    }, 350); // Matches CSS transition duration
+                }, 100);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
