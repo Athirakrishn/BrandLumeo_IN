@@ -1,0 +1,9 @@
+{
+  "name": "brandlumeo_web",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix brandlumeo_next run dev",
+    "build": "npm --prefix brandlumeo_next run build",
+    "start": "npm --prefix brandlumeo_next run start"
+  }
+}

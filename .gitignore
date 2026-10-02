@@ -1,17 +1,10 @@
-# Virtual environment
-.venv/
-venv/
+# Dependencies & build output
+node_modules/
+.next/
 
 # Environment variables
 .env
-
-# Python cache
-__pycache__/
-*.py[cod]
-*.pyo
-
-# Django
-db.sqlite3
+.env*.local
 
 # IDE files
 .vscode/
@@ -23,9 +16,3 @@ Thumbs.db
 
 # Logs
 *.log
-
-# Static collected files (if using collectstatic)
-staticfiles/
-
-# Media (optional)
-media/
