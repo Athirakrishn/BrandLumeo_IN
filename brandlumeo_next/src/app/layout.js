@@ -3,6 +3,7 @@ import './style.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import HeadingTilt from '../components/HeadingTilt';
+import Preloader from '../components/Preloader';
 import Script from 'next/script';
 
 export const metadata = {
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
         `}</style>
       </head>
       <body>
+        <Preloader />
 
         {/* Google Analytics */}
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-4E32TBWQW7" strategy="afterInteractive" />

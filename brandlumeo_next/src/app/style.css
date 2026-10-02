@@ -8011,3 +8011,174 @@ textarea {
 :disabled {
     cursor: not-allowed !important;
 }
+
+/* Preloader (components/Preloader.js): BRANDLUMEO rises out of a mask over a 000-100 counter,
+   then the screen splits into two curtains that slide apart to reveal the page. */
+.pl {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    pointer-events: all;
+    /* Safety net if JS never runs: get out of the way on its own */
+    animation: pl-fallback 0.6s ease 7s forwards;
+}
+
+.pl.is-exiting {
+    pointer-events: none;
+}
+
+.pl__curtain {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 50.5%;
+    background: #050505;
+    transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1) 0.25s;
+}
+
+.pl__curtain--top {
+    top: 0;
+}
+
+.pl__curtain--bottom {
+    bottom: 0;
+}
+
+.pl.is-exiting .pl__curtain--top {
+    transform: translateY(-100%);
+}
+
+.pl.is-exiting .pl__curtain--bottom {
+    transform: translateY(100%);
+}
+
+.pl__content,
+.pl__counter {
+    position: absolute;
+    z-index: 2;
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.pl.is-exiting .pl__content,
+.pl.is-exiting .pl__counter {
+    opacity: 0;
+    transform: translateY(-24px);
+}
+
+.pl__content {
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.pl__word {
+    display: flex;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(44px, 10vw, 136px);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+
+.pl__mask {
+    display: inline-block;
+    overflow: hidden;
+    padding-top: 0.06em;
+}
+
+.pl__char {
+    display: inline-block;
+    color: #ffffff;
+    transform: translateY(110%);
+    animation: pl-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--i) * 55ms + 150ms);
+}
+
+.pl__char--accent {
+    color: #34d264;
+}
+
+.pl__line {
+    position: relative;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.pl__line span {
+    position: absolute;
+    inset: 0;
+    background: #34d264;
+    box-shadow: 0 0 12px rgba(52, 210, 100, 0.7);
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+.pl__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(9px, 1vw, 11px);
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    opacity: 0;
+    animation: pl-fade 0.8s ease 0.8s forwards;
+}
+
+.pl__counter {
+    right: clamp(16px, 4vw, 56px);
+    bottom: clamp(12px, 3vh, 40px);
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(56px, 11vw, 150px);
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.22);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Hold the hero's LUMEO slide-in until the curtains open, so visitors actually see it */
+.pl:not(.is-exiting) ~ main .hh-title__lumeo {
+    animation-play-state: paused;
+}
+
+@keyframes pl-rise {
+    to { transform: translateY(0); }
+}
+
+@keyframes pl-fade {
+    to { opacity: 1; }
+}
+
+@keyframes pl-fallback {
+    to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@media (max-width: 600px) {
+    .pl__meta {
+        letter-spacing: 0.2em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pl__char,
+    .pl__meta {
+        animation: none;
+        transform: none;
+        opacity: 1;
+    }
+
+    .pl__curtain {
+        transition: opacity 0.5s ease;
+    }
+
+    .pl.is-exiting .pl__curtain--top,
+    .pl.is-exiting .pl__curtain--bottom {
+        transform: none;
+        opacity: 0;
+    }
+}
