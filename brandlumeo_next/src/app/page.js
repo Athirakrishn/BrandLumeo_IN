@@ -24,7 +24,17 @@ const leaders = [
   { name: 'MUHAMMAD\nRASAL FARHAN', title: 'BDM', img: '/images/team/farhan.jpg', color: '#10b981', bio: 'Muhammad Rasal Farhan is the Business Development Manager, driving strategic partnerships and growth initiatives to scale Brandlumeo\'s presence.' },
 ];
 
-const logos = ['logo-edufix.png','logo-sa-vision-hd.png','logo-codeboost.png','logo-hearts.png','logo-petalbox.png','logo-otomation.png','logo-skylight.png'];
+
+const clients = [
+  { name: 'Otomation', logo: 'logo-otomation.png' },
+  { name: 'Skylight Studio', logo: 'logo-skylight.png' },
+  { name: 'Nutrihive Healthcare', logo: 'logo-nutrihive.png' },
+  { name: 'Edufix', logo: 'logo-edufix.png' },
+  { name: 'SA Vision', logo: 'logo-sa-vision-hd.png' },
+  { name: 'Codeboost', logo: 'logo-codeboost.png' },
+  { name: 'Hearts', logo: 'logo-hearts.png' },
+  { name: 'Petalbox', logo: 'logo-petalbox.png' },
+];
 
 export default function HomePage() {
   return (
@@ -40,19 +50,6 @@ export default function HomePage() {
         <div className="rn-wrap rn-intro__inner">
           <p>Full-funnel digital marketing for ambitious brands across Kerala &amp; the GCC — strategy, creative and performance under one roof.</p>
           <a href="#services" className="rn-btn rn-btn--outline">What we do</a>
-        </div>
-      </section>
-
-      {/* LOGO STRIP */}
-      <section className="logo-strip" aria-label="Clients and projects">
-        <div className="team-scroll-wrap" data-team-scroll-wrap>
-          <div className="team-scroll-track">
-            {[...logos, ...logos].map((logo, i) => (
-              <div key={i} className="team-scroll-card">
-                <img src={`/images/homepage/${logo}`} alt={logo.replace('logo-','').replace('.png','').replace('.jpg','')} />
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -157,6 +154,21 @@ export default function HomePage() {
             { "@type": "Question", "name": "Can you support multiple markets?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We run region-specific campaigns for local, national, and international growth." } },
           ]
         })}} />
+      </section>
+
+      {/* CLIENTS */}
+      <section className="rn-section rn-clients" aria-label="Our clients">
+        <div className="rn-wrap">
+          <h2 className="rn-display rn-display--md">Our Precious Clients</h2>
+          <p className="rn-lead rn-clients__lead">Our integrated approach brings efficiency and transparency to everything we do. Here are some of the brands we&apos;re proud to work with.</p>
+          <ul className="rn-clients__grid">
+            {clients.map((client) => (
+              <li key={client.logo} className="rn-clients__item">
+                <img src={`/images/homepage/${client.logo}`} alt={client.name} loading="lazy" />
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <Script id="home-scripts" strategy="afterInteractive">{`
