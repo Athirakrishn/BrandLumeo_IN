@@ -32,7 +32,7 @@ export default function Navbar() {
           ))}
           <Link href="/contact" className="rn-nav__cta">Connect</Link>
         </nav>
-        <button className="nav-toggle rn-nav__toggle" id="nav-toggle" aria-label="Toggle Navigation" aria-expanded="false">
+        <button suppressHydrationWarning className="nav-toggle rn-nav__toggle" id="nav-toggle" aria-label="Toggle Navigation" aria-expanded="false">
           <span className="hamburger-line"></span>
           <span className="hamburger-line"></span>
           <span className="hamburger-line"></span>
@@ -47,7 +47,7 @@ export default function Navbar() {
             <Link href="/" className="logo modal-logo">
               <Image src="/images/logo-icon.png" alt="Brandlumeo Logo" width={140} height={40} />
             </Link>
-            <button className="nav-modal-close" id="nav-modal-close" aria-label="Close Menu">
+            <button suppressHydrationWarning className="nav-modal-close" id="nav-modal-close" aria-label="Close Menu">
               <span className="close-line"></span>
               <span className="close-line"></span>
             </button>

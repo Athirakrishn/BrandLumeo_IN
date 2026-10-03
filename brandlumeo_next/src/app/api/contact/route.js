@@ -35,13 +35,17 @@ export async function POST(req) {
   const email = String(data.email || '').trim();
   const company = String(data.company || '').trim();
   const message = String(data.message || '').trim();
+  const phone = String(data.phone || '').trim();
+  const interests = String(data.interests || '').trim();
 
   if (!name || !email || !message) {
     return Response.json({ error: 'Please fill out your name, email, and message.' }, { status: 400 });
   }
 
   let body = `Name: ${name}\nEmail: ${email}\n`;
+  if (phone) body += `Phone: ${phone}\n`;
   if (company) body += `Company: ${company}\n`;
+  if (interests) body += `Interested in: ${interests}\n`;
   body += `\nMessage:\n${message}`;
 
   const from = process.env.DEFAULT_FROM_EMAIL || process.env.EMAIL_HOST_USER || TARGET_EMAIL;

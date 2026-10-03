@@ -47,6 +47,7 @@ export default function BlogPage() {
           <div className="rn-filters" role="group" aria-label="Filter by topic">
             {filters.map((f) => (
               <button
+                suppressHydrationWarning
                 key={f.key}
                 type="button"
                 className={active === f.key ? 'is-active' : undefined}
@@ -88,8 +89,8 @@ export default function BlogPage() {
             <div className="rn-newsletter__body">
               <p><strong>Want monthly insights?</strong> Receive executive summaries of the most impactful trends in digital marketing growth directly to your inbox.</p>
               <form onSubmit={(e) => { e.preventDefault(); }}>
-                <input type="email" placeholder="Email Address" aria-label="Email Address" required />
-                <button type="submit">Subscribe Now</button>
+                <input suppressHydrationWarning type="email" placeholder="Email Address" aria-label="Email Address" required />
+                <button suppressHydrationWarning type="submit">Subscribe Now</button>
               </form>
             </div>
           </div>

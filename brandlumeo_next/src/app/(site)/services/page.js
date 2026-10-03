@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SERVICE_SECTIONS } from '@/data/services';
+import ServicesHeroVisual from '@/components/ServicesHeroVisual';
 
 export const metadata = {
   title: 'Our Digital Services – Branding, Marketing & Development | Brandlumeo',
@@ -38,7 +39,7 @@ const focusAreas = [
       { title: 'Local & Map Pack SEO', desc: 'Dominate local search results across Kerala and UAE markets.' },
       { title: 'Link Building', desc: 'High-authority backlink acquisition through ethical outreach.' },
     ],
-    img: '/images/services/subsections/search-engine-optimization-seo.jpg',
+    img: '/images/blog/blog-seo.jpg',
   },
   {
     id: 'paid-media',
@@ -51,7 +52,7 @@ const focusAreas = [
       { title: 'LinkedIn Ads', desc: 'B2B lead generation for enterprise and professional markets.' },
       { title: 'Conversion Rate Optimization', desc: 'Landing pages, A/B testing, and funnel optimization.' },
     ],
-    img: '/images/services/subsections/ppc-advertising.jpg',
+    img: '/images/blog/blog-paid.jpg',
   },
   {
     id: 'social-media',
@@ -64,7 +65,7 @@ const focusAreas = [
       { title: 'Community Management', desc: 'Engagement, inbox management, and audience growth.' },
       { title: 'Influencer Marketing', desc: 'Micro and macro influencer campaigns for brand reach.' },
     ],
-    img: '/images/services/subsections/social-media-marketing.jpg',
+    img: '/images/services/digital-marketing.jpg',
   },
 ];
 
@@ -89,7 +90,7 @@ export default function ServicesPage() {
             </div>
           </div>
           <div className="rn-media">
-            <img src="/images/services-hero.png" alt="Digital agency marketing team" />
+            <ServicesHeroVisual />
           </div>
           <div className="rn-stats">
             {stats.map((s) => (
@@ -102,28 +103,46 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="rn-section" aria-label="What we do">
+      <section className="rn-section svc-wwd" aria-label="What we do">
         <div className="rn-wrap">
-          <h2 className="rn-display rn-display--md">What We Do</h2>
-          {focusAreas.map((area, i) => (
-            <article key={area.id} id={area.id} className={`rn-split${i % 2 ? ' rn-split--reverse' : ''}`}>
-              <div className="rn-split__media">
-                <img src={area.img} alt={area.title} loading="lazy" />
-              </div>
-              <div className="rn-split__body">
-                <span className="rn-eyebrow">{area.eyebrow}</span>
-                <h3>{area.title}</h3>
-                <p>{area.desc}</p>
-                <div className="rn-services__grid" style={{ gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '20px 24px' }}>
-                  {area.services.map((s) => (
-                    <p key={s.title} className="rn-caption" style={{ margin: 0, fontSize: '16px' }}>
-                      <strong>{s.title}</strong><br />{s.desc}
-                    </p>
-                  ))}
+          <header className="svc-wwd__head">
+            <h2 className="rn-display rn-display--md">What We Do</h2>
+            <div className="svc-wwd__intro">
+              <span className="svc-wwd__tag"><i />Four disciplines. One growth engine.</span>
+              <p>Strategy, search, paid media and social: each one built by specialists, all of them working toward the same revenue number.</p>
+            </div>
+          </header>
+
+          <div className="svc-wwd__list">
+            {focusAreas.map((area, i) => (
+              <article key={area.id} id={area.id} className={`svc-card${i % 2 ? ' svc-card--reverse' : ''}`}>
+                <div className="svc-card__media">
+                  <img src={area.img} alt={area.title} loading="lazy" />
+                  <span className="svc-card__index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-              </div>
-            </article>
-          ))}
+                <div className="svc-card__body">
+                  <span className="svc-card__eyebrow">{area.eyebrow}</span>
+                  <h3>{area.title}</h3>
+                  <p className="svc-card__desc">{area.desc}</p>
+                  <ul className="svc-card__services">
+                    {area.services.map((s, j) => (
+                      <li key={s.title}>
+                        <span className="svc-card__num">{String(j + 1).padStart(2, '0')}</span>
+                        <div>
+                          <strong>{s.title}</strong>
+                          <span>{s.desc}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/contact" className="svc-card__cta">
+                    Discuss {area.eyebrow}
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

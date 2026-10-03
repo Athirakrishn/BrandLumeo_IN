@@ -13,7 +13,7 @@ const projects = [
 ];
 
 const stats = [
-  { num: <>7<span>+</span></>, label: 'Client brands' },
+  { num: <>10<span>+</span></>, label: 'Client brands' },
   { num: <>320<span>+</span></>, label: 'Campaigns delivered' },
   { num: <>3<span>x</span></>, label: 'Average ROI' },
   { num: '6', label: 'Industry verticals' },

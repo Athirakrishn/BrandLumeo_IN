@@ -34,6 +34,10 @@ const clients = [
   { name: 'Codeboost', logo: 'logo-codeboost.png' },
   { name: 'Hearts', logo: 'logo-hearts.png' },
   { name: 'Petalbox', logo: 'logo-petalbox.png' },
+  { name: 'Elvessora', logo: 'Elvessora_logo-trim.png' },
+  { name: 'Eyetrack', logo: 'Eyetrack_logo-trim.png' },
+  { name: 'Infinity', logo: 'infinity_logo-trim.png' },
+  { name: 'Best Flowers', logo: 'bestflowers_logo.jpeg' },
 ];
 
 export default function HomePage() {
@@ -135,7 +139,7 @@ export default function HomePage() {
               { q: 'Can you support multiple markets?', a: 'Yes. We build region-specific campaigns for local, national, and international growth.' },
             ].map((faq, i) => (
               <div key={i} className="faq-item">
-                <button className="faq-trigger" aria-expanded="false">
+                <button suppressHydrationWarning className="faq-trigger" aria-expanded="false">
                   <span className="faq-plus" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></span>
                   <span>{faq.q}</span>
                 </button>
@@ -163,7 +167,7 @@ export default function HomePage() {
           <p className="rn-lead rn-clients__lead">Our integrated approach brings efficiency and transparency to everything we do. Here are some of the brands we&apos;re proud to work with.</p>
           <ul className="rn-clients__grid">
             {clients.map((client) => (
-              <li key={client.logo} className="rn-clients__item">
+              <li key={client.logo} className={`rn-clients__item${client.dark ? ' rn-clients__item--dark' : ''}`}>
                 <img src={`/images/homepage/${client.logo}`} alt={client.name} loading="lazy" />
               </li>
             ))}

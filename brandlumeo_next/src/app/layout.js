@@ -86,8 +86,8 @@ export default function RootLayout({ children }) {
               <p>We use cookies for essential functionality and analytics. See our <a href="/cookies">Cookie Policy</a>.</p>
             </div>
             <div className="cookie-consent-actions">
-              <button type="button" className="btn btn-secondary cookie-btn" id="cookie-decline">Decline</button>
-              <button type="button" className="btn cookie-btn" id="cookie-accept">Accept</button>
+              <button suppressHydrationWarning type="button" className="btn btn-secondary cookie-btn" id="cookie-decline">Decline</button>
+              <button suppressHydrationWarning type="button" className="btn cookie-btn" id="cookie-accept">Accept</button>
             </div>
           </div>
         </div>

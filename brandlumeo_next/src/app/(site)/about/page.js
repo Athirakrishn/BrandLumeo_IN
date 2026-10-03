@@ -5,9 +5,9 @@ import Us3D from '@/components/Us3D';
 export const metadata = { title: 'About Brandlumeo – Digital Marketing Agency Kerala & UAE' };
 
 const culture = [
-  { img: '/images/about-culture-1.png', name: 'Data-driven', desc: 'Every decision backed by numbers' },
-  { img: '/images/about-culture-2.png', name: 'Creative', desc: 'Storytelling that converts' },
-  { img: '/images/about-culture-3.png', name: 'Accountable', desc: 'Real results, not vanity metrics' },
+  { img: '/images/about-culture-1.jpg', name: 'Data-driven', desc: 'Every decision backed by numbers' },
+  { img: '/images/about-culture-2.jpg', name: 'Creative', desc: 'Storytelling that converts' },
+  { img: '/images/about-culture-3.jpg', name: 'Accountable', desc: 'Real results, not vanity metrics' },
 ];
 
 const experts = [
