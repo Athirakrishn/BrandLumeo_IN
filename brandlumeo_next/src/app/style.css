@@ -6965,6 +6965,102 @@ body.cookie-consent-visible .h-scroll-portfolio-section {
     transform: scale(1.04);
 }
 
+/* Work wall: columns of portrait video cards drifting up/down (Yellowtooths-style) */
+.wr-wall {
+    --wr-gap: clamp(10px, 1.4vw, 24px);
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--wr-gap);
+    /* Edge-to-edge and a full screen tall, like the Yellowtooths hero */
+    height: 100vh;
+    height: 100svh;
+    min-height: 560px;
+    padding-inline: var(--wr-gap);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 6%, #000 94%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+
+.wr-col {
+    min-width: 0;
+}
+
+/* Track holds every clip twice; shifting by -50% lands exactly on the copy.
+   Runs fast and never pauses, like the Yellowtooths hero wall. */
+.wr-track {
+    display: flex;
+    flex-direction: column;
+    animation: wr-drift-up 14s linear infinite;
+    will-change: transform;
+}
+
+.wr-col--down .wr-track {
+    animation-name: wr-drift-down;
+    animation-duration: 17s;
+}
+
+.wr-col:nth-child(3) .wr-track {
+    animation-duration: 12s;
+}
+
+.wr-col:nth-child(5) .wr-track {
+    animation-duration: 15s;
+}
+
+.wr-col:nth-child(6) .wr-track {
+    animation-duration: 18s;
+}
+
+/* Bottom padding (not flex gap) keeps the -50% loop seamless. */
+.wr-card {
+    padding-bottom: var(--wr-gap);
+}
+
+.wr-card video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 14px;
+    background: #111;
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+.wr-wall:hover .wr-card video {
+    filter: brightness(0.55);
+}
+
+.wr-wall .wr-card:hover video {
+    filter: none;
+    transform: scale(1.03);
+}
+
+@keyframes wr-drift-up {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+}
+
+@keyframes wr-drift-down {
+    from { transform: translateY(-50%); }
+    to { transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    .wr-wall {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .wr-col:nth-child(n + 4) {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wr-track {
+        animation: none;
+    }
+}
+
 /* Services: lead copy + columns of service links */
 .rn-services {
     display: grid;
@@ -7111,6 +7207,279 @@ body.cookie-consent-visible .h-scroll-portfolio-section {
 @media (max-width: 560px) {
     .rn-clients__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Portfolio: Selected Engagements — case-study cards + client logo wall */
+.rn-eng__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 72px);
+    align-items: end;
+    margin-bottom: clamp(36px, 5vw, 72px);
+}
+
+.rn-eng__head .rn-display {
+    margin: 12px 0 0;
+}
+
+.rn-eng__intro .rn-lead {
+    margin: 0 0 24px;
+}
+
+.rn-eng__count {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid #222;
+}
+
+.rn-eng__count strong {
+    font-family: "Anton", "Impact", sans-serif;
+    font-size: clamp(40px, 4vw, 56px);
+    font-weight: 400;
+    line-height: 1;
+    color: #34d264;
+}
+
+.rn-eng__count span {
+    font-size: 15px;
+    color: #777c81;
+}
+
+.rn-eng__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(16px, 1.8vw, 28px);
+}
+
+.rn-eng-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #1f1f22;
+    border-radius: 18px;
+    background: #0b0b0c;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rn-eng-card:hover {
+    border-color: #068f34;
+    transform: translateY(-4px);
+}
+
+.rn-eng-card__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #111;
+}
+
+.rn-eng-card__media > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rn-eng-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(11, 11, 12, 0.85) 100%);
+    pointer-events: none;
+}
+
+.rn-eng-card:hover .rn-eng-card__media > img {
+    transform: scale(1.04);
+}
+
+.rn-eng-card__index {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    z-index: 1;
+    font-family: "Anton", "Impact", sans-serif;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.rn-eng-card__logo {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    min-width: 96px;
+    max-width: 150px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.rn-eng-card__logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.rn-eng-card__logo b {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0b0b0c;
+    white-space: nowrap;
+}
+
+.rn-eng-card__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: clamp(22px, 2.2vw, 32px);
+}
+
+.rn-eng-card__cat {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #34d264;
+}
+
+.rn-eng-card__body h3 {
+    font-size: clamp(24px, 2.2vw, 32px);
+    font-weight: 500;
+    letter-spacing: -0.6px;
+    color: #ffffff;
+    margin: 8px 0 12px;
+}
+
+.rn-eng-card__body > p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #8e9096;
+    margin: 0 0 22px;
+}
+
+.rn-eng-card__metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 22px;
+    border-top: 1px solid #1f1f22;
+    border-bottom: 1px solid #1f1f22;
+}
+
+.rn-eng-card__metrics div {
+    padding: 16px 0;
+}
+
+.rn-eng-card__metrics div + div {
+    padding-left: 20px;
+    border-left: 1px solid #1f1f22;
+}
+
+.rn-eng-card__metrics strong {
+    display: block;
+    font-family: "Anton", "Impact", sans-serif;
+    font-size: clamp(32px, 3vw, 42px);
+    font-weight: 400;
+    line-height: 1;
+    color: #ffffff;
+}
+
+.rn-eng-card__metrics span {
+    font-size: 14px;
+    color: #777c81;
+}
+
+.rn-eng-card .rn-tags {
+    margin-top: auto;
+}
+
+.rn-eng__more {
+    margin-top: clamp(48px, 6vw, 88px);
+    padding-top: clamp(28px, 3vw, 40px);
+    border-top: 1px solid #1d1d1f;
+}
+
+.rn-eng__more h3 {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #777c81;
+    margin: 0 0 24px;
+}
+
+.rn-eng__logos {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: clamp(12px, 1.4vw, 20px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.rn-eng__logos li {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rn-eng__logo-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 3;
+    padding: clamp(12px, 1.6vw, 22px);
+    border-radius: 12px;
+    background: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rn-eng__logo-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.rn-eng__logos li:hover .rn-eng__logo-tile {
+    transform: translateY(-4px);
+    box-shadow: 0 0 0 2px #068f34;
+}
+
+.rn-eng__logo-name {
+    font-size: 14px;
+    color: #c9cbd0;
+    text-align: center;
+}
+
+@media (max-width: 1100px) {
+    .rn-eng__logos {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .rn-eng__head,
+    .rn-eng__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .rn-eng__logos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .rn-eng-card__logo {
+        height: 44px;
+        min-width: 80px;
     }
 }
 
@@ -8628,9 +8997,15 @@ a.ct-row:hover .ct-row__go {
 }
 
 
-/* About page experts: 3x3 grid of cut-out portraits on a light studio backdrop */
+/* About page experts: rows of 4 smaller cut-out portraits on a light studio backdrop */
 .rn-team-grid--experts {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+    .rn-team-grid--experts {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 .rn-team-grid--experts .rn-team-card__media {

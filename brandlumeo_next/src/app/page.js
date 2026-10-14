@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Script from 'next/script';
 import HomeHero from '../components/HomeHero';
+import WorkReel from '../components/WorkReel';
 import { SERVICE_SECTIONS } from '@/data/services';
 
 export const metadata = {
@@ -9,19 +10,12 @@ export const metadata = {
   alternates: { canonical: 'https://brandlumeo.com/' },
 };
 
-const work = [
-  { name: 'Otomation', cat: 'E-Invoice Platform', img: '/images/portfolio/otomation.png' },
-  { name: 'Skylightstudio', cat: 'Premium Lighting Retail', img: '/images/portfolio/skylight.png' },
-  { name: 'Nutrihive Healthcare', cat: 'Healthcare & Wellness', img: '/images/portfolio/nutrihive.png' },
-  { name: 'Bellwether Trading', cat: 'B2B Commodity Trading', img: '/images/portfolio/bellwether.png' },
-];
-
 const leaders = [
   { name: 'MUHAMMAD\nAFTHAB', title: 'CEO', img: '/images/team/muhammad.jpg', color: '#3b82f6', bio: 'Muhammad Afthab is the Chief Executive Officer leading Brandlumeo with a vision for growth. He is known for fostering innovation and scalable strategies.' },
   { name: 'MIDHUN\nASOK', title: 'COO', img: '/images/team/midhun.png', color: '#e11d48', bio: 'Midhun Asok is the Chief Operating Officer dedicated to promoting sustainable execution, ensuring all campaigns meet our high standards.' },
   { name: 'SHANAVAS', title: 'CFO', img: '/images/team/shanavas.jpg', color: '#8b5cf6', bio: 'Shanavas is the Chief Financial Officer ensuring the fiscal health and strategic investments of Brandlumeo, enabling our continuous market expansion.' },
   { name: 'SHARAFUDEEN', title: 'General Manager', img: '/images/team/sharafudeen.png', color: '#eab308', bio: 'Sharafudeen is the General Manager driving operational excellence. Known for streamlining processes and delivering strategic growth solutions.' },
-  { name: 'MUHAMMAD\nRASAL FARHAN', title: 'BDM', img: '/images/team/farhan.jpg', color: '#10b981', bio: 'Muhammad Rasal Farhan is the Business Development Manager, driving strategic partnerships and growth initiatives to scale Brandlumeo\'s presence.' },
+  { name: 'MUHAMMAD\nSHAHABAZ', title: 'BDM', img: '/images/team/shahabaz.jpg', color: '#10b981', bio: 'Muhammad Shahabaz is the Business Development Manager, driving strategic partnerships and growth initiatives to scale Brandlumeo\'s presence.' },
 ];
 
 
@@ -61,16 +55,10 @@ export default function HomePage() {
       <section className="rn-section" aria-label="Our work">
         <div className="rn-wrap">
           <h2 className="rn-display">Our Work</h2>
-          <div className="rn-work-grid">
-            {work.map((item) => (
-              <Link key={item.name} href="/portfolio" className="rn-work-card">
-                <div className="rn-work-card__media">
-                  <img src={item.img} alt={`${item.name} – ${item.cat}`} loading="lazy" />
-                </div>
-                <p className="rn-caption"><strong>{item.name}</strong> {item.cat}</p>
-              </Link>
-            ))}
-          </div>
+        </div>
+        {/* Full-bleed, full-viewport wall (Yellowtooths hero-style) */}
+        <WorkReel />
+        <div className="rn-wrap">
           <div className="rn-section__actions">
             <Link href="/portfolio" className="rn-btn rn-btn--outline">More Work</Link>
           </div>
