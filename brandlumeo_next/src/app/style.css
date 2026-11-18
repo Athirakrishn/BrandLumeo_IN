@@ -9818,3 +9818,10 @@ textarea {
   max-width: 48ch !important;
   margin-inline: auto;
 }
+
+/* Home page: white headings */
+main:has(> #hero.hh-hero) .rn-display,
+main:has(> #hero.hh-hero) .rn-services__col h3,
+.home-faq-section .home-faq-left .home-faq-title {
+  color: #fff;
+}
