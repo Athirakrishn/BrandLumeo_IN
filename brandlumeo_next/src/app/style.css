@@ -9818,3 +9818,8 @@ textarea {
   max-width: 48ch !important;
   margin-inline: auto;
 }
+
+/* Home hero: remove scrolling poster strip */
+.hh-hero .hh-film {
+  display: none;
+}
