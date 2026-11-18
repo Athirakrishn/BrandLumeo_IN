@@ -16,3 +16,8 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Build artifacts / caches (too large for GitHub)
+out/
+out.zip
+.well-known/dev/
