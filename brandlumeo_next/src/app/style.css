@@ -9681,3 +9681,126 @@ textarea {
     gap: 20px;
   }
 }
+
+/* Service detail heroes: dark stage with drifting glows */
+@keyframes bl-hero-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(9vw, 5vw, 0) scale(1.15); }
+  66% { transform: translate3d(-3vw, 10vw, 0) scale(.9); }
+}
+@keyframes bl-hero-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(-9vw, -6vw, 0) scale(.9); }
+  66% { transform: translate3d(4vw, -2vw, 0) scale(1.12); }
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  min-height: max(100svh, 560px);
+  padding: clamp(120px, 12vw, 170px) 0 clamp(64px, 8vw, 110px);
+  background: #121212;
+  text-align: center;
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"])::before,
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"])::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  animation: bl-hero-drift-a 18s ease-in-out infinite;
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"])::before {
+  left: -22%;
+  top: -40%;
+  width: 78vw;
+  height: 78vw;
+  background: radial-gradient(closest-side, rgba(52, 210, 100, .42), rgba(52, 210, 100, .16) 55%, transparent);
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"])::after {
+  right: -28%;
+  bottom: -45%;
+  width: 88vw;
+  height: 88vw;
+  background: radial-gradient(closest-side, rgba(245, 158, 11, .34), rgba(245, 158, 11, .12) 55%, transparent);
+  animation-name: bl-hero-drift-b;
+  animation-duration: 21s;
+}
+/* vignette + top shade for the nav */
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, .78), transparent 26%),
+    radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, .55) 100%);
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-wrap > * {
+  position: relative;
+  z-index: 2;
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-eyebrow {
+  color: #d8f5e1;
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-display {
+  color: #fff;
+  margin-bottom: clamp(20px, 2.4vw, 32px);
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-hero-row {
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(24px, 3vw, 40px);
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-lead {
+  color: #e4e7e5;
+  max-width: 40ch;
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-actions {
+  justify-content: center;
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-btn--solid {
+  min-height: clamp(48px, 3.4vw, 60px);
+  padding: 0 clamp(22px, 2vw, 34px);
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: #000;
+  font-size: clamp(16px, 1.3vw, 20px);
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+  transition: background-color .25s, color .25s, transform .25s;
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-btn--solid:hover {
+  background: #34d264;
+  color: #000;
+  transform: translateY(-2px);
+}
+@media (max-width: 720px) {
+  .rn-page-hero:has(.rn-eyebrow a[href="/services/"])::before { width: 130vw; height: 130vw; top: -30%; left: -50%; }
+  .rn-page-hero:has(.rn-eyebrow a[href="/services/"])::after { width: 140vw; height: 140vw; right: -60%; bottom: -30%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rn-page-hero:has(.rn-eyebrow a[href="/services/"])::before,
+  .rn-page-hero:has(.rn-eyebrow a[href="/services/"])::after { animation: none; }
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) {
+  border-bottom: 0;
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-hero-row {
+  display: flex;
+}
+.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-hero-row .rn-btn {
+  margin-top: 0;
+}
