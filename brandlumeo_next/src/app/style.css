@@ -9823,3 +9823,49 @@ textarea {
 .hh-hero .hh-film {
   display: none;
 }
+
+/* Contact hero heading: rise-in + fall-down on scroll (driven by /css/heading-fall.js) */
+html.hf-pending .ct-hero .rn-display {
+  visibility: hidden;
+}
+.hf-ready .hf-word {
+  display: inline-block;
+  vertical-align: bottom;
+  will-change: transform;
+}
+.hf-ready .hf-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding: .08em .02em;
+  margin: -.08em -.02em;
+}
+.hf-ready .hf-inner {
+  display: inline-block;
+  transform: translateY(110%);
+}
+.hf-ready.hf-show .hf-inner {
+  transform: translateY(0);
+  transition: transform .85s cubic-bezier(.22, 1, .36, 1) var(--hf-rise-delay, 0s);
+}
+@keyframes hf-fall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    animation-timing-function: ease-out;
+  }
+  16% {
+    transform: translate(calc(var(--hf-x) * .2), -3vh) rotate(calc(var(--hf-r) * .15));
+    animation-timing-function: cubic-bezier(.5, 0, .9, .45);
+  }
+  100% {
+    transform: translate(calc(var(--hf-x) * 1.5), 140vh) rotate(calc(var(--hf-r) * 2.4));
+  }
+}
+.hf-ready.hf-fallen .hf-word {
+  animation: hf-fall 1.3s var(--hf-fall-delay, 0s) both;
+}
+
+/* Contact map: full colour */
+.ct-map iframe {
+  filter: none;
+}

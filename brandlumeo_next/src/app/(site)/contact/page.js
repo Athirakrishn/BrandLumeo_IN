@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Script from 'next/script';
 
 const SOCIALS = [
   { href: 'https://www.linkedin.com/company/111710517/', label: 'LinkedIn' },
@@ -166,12 +167,12 @@ export default function ContactPage() {
             <h2 className="rn-display rn-display--md">Our Location</h2>
             <div>
               <p className="rn-lead">We welcome scheduled in-person consultations.</p>
-              <a className="rn-btn rn-btn--outline" href="https://www.google.com/maps/place/Brandlumeo/@11.5229742,75.6259868" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+              <a className="rn-btn rn-btn--outline" href="https://www.google.com/maps/search/?api=1&query=Hilite+Business+Park+Phase+1,+Calicut,+Kerala,+India" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
             </div>
           </div>
           <div className="ct-map">
             <iframe
-              src="https://www.google.com/maps?q=11.5229744,75.6362866&z=15&output=embed"
+              src="https://www.google.com/maps?q=Hilite+Business+Park+Phase+1,+Calicut,+Kerala,+India&z=17&output=embed"
               title="Brandlumeo location map"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -180,13 +181,14 @@ export default function ContactPage() {
             <div className="ct-map__card">
               <span className="ct-row__icon"><Icon d={ICONS.pin} /></span>
               <div>
-                <strong>Brandlumeo LLP</strong>
-                <p>Payyoli - Perambra Rd, Kozhikode, Kerala 673522</p>
+                <strong>Head Office – Calicut</strong>
+                <p>Hilite Business Park, Phase 1, First Floor, Calicut, Kerala, India.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <Script src="/css/heading-fall.js" strategy="afterInteractive" />
     </>
   );
 }
