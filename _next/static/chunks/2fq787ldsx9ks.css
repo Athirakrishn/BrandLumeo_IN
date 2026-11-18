@@ -285,9 +285,8 @@
   margin-inline: auto;
 }
 
-/* Home page: white headings */
-main:has(> #hero.hh-hero) .rn-display,
-main:has(> #hero.hh-hero) .rn-services__col h3,
-.home-faq-section .home-faq-left .home-faq-title {
-  color: #fff;
+/* Home page: gray-50 headings (hero excluded) */
+main:has(> #hero.hh-hero) > :not(#hero) :is(h1, h2, h3, h4, h5, h6),
+body:has(#hero.hh-hero) .lc-footer :is(h1, h2, h3, h4, h5, h6) {
+  color: #f9fafb;
 }
