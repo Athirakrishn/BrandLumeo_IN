@@ -9682,7 +9682,7 @@ textarea {
   }
 }
 
-/* Service detail heroes: dark stage with drifting glows */
+/* Service detail + contact heroes: dark stage with drifting glows */
 @keyframes bl-hero-drift-a {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
   33% { transform: translate3d(9vw, 5vw, 0) scale(1.15); }
@@ -9693,7 +9693,7 @@ textarea {
   33% { transform: translate3d(-9vw, -6vw, 0) scale(.9); }
   66% { transform: translate3d(4vw, -2vw, 0) scale(1.12); }
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -9705,8 +9705,8 @@ textarea {
   background: #121212;
   text-align: center;
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"])::before,
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"])::after {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::before,
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::after {
   content: "";
   position: absolute;
   z-index: 0;
@@ -9715,14 +9715,14 @@ textarea {
   will-change: transform;
   animation: bl-hero-drift-a 18s ease-in-out infinite;
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"])::before {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::before {
   left: -22%;
   top: -40%;
   width: 78vw;
   height: 78vw;
   background: radial-gradient(closest-side, rgba(52, 210, 100, .42), rgba(52, 210, 100, .16) 55%, transparent);
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"])::after {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::after {
   right: -28%;
   bottom: -45%;
   width: 88vw;
@@ -9732,7 +9732,7 @@ textarea {
   animation-duration: 21s;
 }
 /* vignette + top shade for the nav */
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-wrap::before {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-wrap::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -9742,35 +9742,35 @@ textarea {
     linear-gradient(to bottom, rgba(0, 0, 0, .78), transparent 26%),
     radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, .55) 100%);
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-wrap {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-wrap > * {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-wrap > * {
   position: relative;
   z-index: 2;
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-eyebrow {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-eyebrow {
   color: #d8f5e1;
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-display {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-display {
   color: #fff;
   margin-bottom: clamp(20px, 2.4vw, 32px);
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-hero-row {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-hero-row {
   flex-direction: column;
   align-items: center;
   gap: clamp(24px, 3vw, 40px);
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-lead {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-lead {
   color: #e4e7e5;
   max-width: 40ch;
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-actions {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-actions {
   justify-content: center;
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-btn--solid {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-btn--solid {
   min-height: clamp(48px, 3.4vw, 60px);
   padding: 0 clamp(22px, 2vw, 34px);
   border: 0;
@@ -9782,25 +9782,39 @@ textarea {
   box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
   transition: background-color .25s, color .25s, transform .25s;
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-btn--solid:hover {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-btn--solid:hover {
   background: #34d264;
   color: #000;
   transform: translateY(-2px);
 }
 @media (max-width: 720px) {
-  .rn-page-hero:has(.rn-eyebrow a[href="/services/"])::before { width: 130vw; height: 130vw; top: -30%; left: -50%; }
-  .rn-page-hero:has(.rn-eyebrow a[href="/services/"])::after { width: 140vw; height: 140vw; right: -60%; bottom: -30%; }
+  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::before { width: 130vw; height: 130vw; top: -30%; left: -50%; }
+  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::after { width: 140vw; height: 140vw; right: -60%; bottom: -30%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .rn-page-hero:has(.rn-eyebrow a[href="/services/"])::before,
-  .rn-page-hero:has(.rn-eyebrow a[href="/services/"])::after { animation: none; }
+  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::before,
+  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::after { animation: none; }
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) {
   border-bottom: 0;
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-hero-row {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-hero-row {
   display: flex;
 }
-.rn-page-hero:has(.rn-eyebrow a[href="/services/"]) .rn-hero-row .rn-btn {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-hero-row .rn-btn {
   margin-top: 0;
+}
+.rn-page-hero.ct-hero .ct-hero__glow {
+  display: none;
+}
+.rn-page-hero.ct-hero .rn-wrap {
+  position: static;
+}
+.rn-page-hero.ct-hero .ct-badge {
+  margin-bottom: 18px;
+}
+.rn-page-hero.ct-hero .rn-lead {
+  color: #e4e7e5;
+  max-width: 48ch !important;
+  margin-inline: auto;
 }
