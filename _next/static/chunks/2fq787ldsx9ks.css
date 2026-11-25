@@ -413,10 +413,12 @@ html.hf-pending .rn-page-hero .rn-display {
 @property --wwd-a{syntax:"<angle>";inherits:false;initial-value:0deg}
 @keyframes wwd-spin{to{--wwd-a:360deg}}
 @keyframes wwd-drift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-6vw,4vw,0) scale(1.15)}}
+@keyframes wwd-sheen{0%{background-position:120% 0}100%{background-position:-120% 0}}
 @keyframes wwd-pulse{0%,100%{box-shadow:0 0 0 0 #0aa53e80}70%{box-shadow:0 0 0 10px #0aa53e00}}
 .svc-wwd{position:relative;overflow:hidden;isolation:isolate}
 .svc-wwd::before{content:"";position:absolute;z-index:-1;top:-10%;right:-15%;width:min(70vw,900px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#0aa53e2e 0%,#0aa53e00 65%);filter:blur(20px);animation:wwd-drift 18s ease-in-out infinite;pointer-events:none}
 .svc-wwd::after{content:"";position:absolute;z-index:-1;inset:0;background-image:linear-gradient(#ffffff08 1px,#0000 1px),linear-gradient(90deg,#ffffff08 1px,#0000 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0,#000 30%,#0000 75%);mask-image:radial-gradient(ellipse 80% 60% at 50% 0,#000 30%,#0000 75%);pointer-events:none}
+.svc-wwd .svc-wwd__head .rn-display{background:linear-gradient(100deg,#575b5f 0%,#575b5f 40%,#6fe095 50%,#575b5f 60%,#575b5f 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:#0000;animation:wwd-sheen 7s ease-in-out infinite}
 .svc-wwd .svc-wwd__intro p{position:relative;padding-left:22px}
 .svc-wwd .svc-wwd__intro p::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:#0aa53e;animation:wwd-pulse 2.4s ease-out infinite}
 .svc-wwd .svc-wwd__list{counter-reset:wwd;gap:28px;perspective:1400px}
@@ -449,4 +451,4 @@ html.wwd-js .svc-wwd .svc-card.wwd-in{transition-delay:0s,0s,0s,var(--wwd-d,0s),
 .svc-wwd .svc-card.wwd-in .svc-card__services li{transition-delay:calc(var(--wwd-d,0s) + .35s + var(--wwd-li,0) * 55ms)}
 .svc-wwd .svc-card__services li:nth-child(2){--wwd-li:1}.svc-wwd .svc-card__services li:nth-child(3){--wwd-li:2}.svc-wwd .svc-card__services li:nth-child(4){--wwd-li:3}.svc-wwd .svc-card__services li:nth-child(5){--wwd-li:4}.svc-wwd .svc-card__services li:nth-child(6){--wwd-li:5}.svc-wwd .svc-card__services li:nth-child(7){--wwd-li:6}.svc-wwd .svc-card__services li:nth-child(8){--wwd-li:7}.svc-wwd .svc-card__services li:nth-child(9){--wwd-li:8}.svc-wwd .svc-card__services li:nth-child(10){--wwd-li:9}
 @media(hover:none),(pointer:coarse){.svc-wwd .svc-card,.svc-wwd .svc-card:hover{transform:none}}
-@media(prefers-reduced-motion:reduce){.svc-wwd::before,.svc-wwd .svc-wwd__intro p::before,.svc-wwd .svc-card::before{animation:none}.svc-wwd .svc-card,.svc-wwd .svc-card *{transition:none!important}.svc-wwd .svc-card,.svc-wwd .svc-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.svc-wwd::before,.svc-wwd .svc-wwd__head .rn-display,.svc-wwd .svc-wwd__intro p::before,.svc-wwd .svc-card::before{animation:none}.svc-wwd .svc-card,.svc-wwd .svc-card *{transition:none!important}.svc-wwd .svc-card,.svc-wwd .svc-card:hover{transform:none}}
