@@ -1,6 +1,6 @@
-/* Contact hero heading: words rise in on load, fall away when the page scrolls. */
+/* Page hero heading (contact + services): words rise in on load, fall away when the page scrolls. */
 (() => {
-  const SELECTOR = '.ct-hero .rn-display';
+  const SELECTOR = '.rn-page-hero .rn-display';
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const root = document.documentElement;
@@ -84,4 +84,58 @@
 
   if (document.readyState === 'complete') wait();
   else addEventListener('load', wait, { once: true });
+})();
+
+/* Services "What We Do" cards: staggered scroll reveal + cursor spotlight and gentle 3D tilt. */
+(() => {
+  const section = document.querySelector('.svc-wwd');
+  if (!section || !('IntersectionObserver' in window)) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setup() {
+    const cards = [...section.querySelectorAll('.svc-card')];
+    if (!cards.length) return;
+    if (!reduced) {
+      // Hide cards only once the observer is ready, so they can never get stuck hidden.
+      document.documentElement.classList.add('wwd-js');
+      const io = new IntersectionObserver((entries) => {
+        // Stagger cards that enter together, top-left first.
+        entries.filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left)
+          .forEach((e, i) => {
+            e.target.style.setProperty('--wwd-d', (i * 0.12).toFixed(2) + 's');
+            e.target.classList.add('wwd-in');
+            io.unobserve(e.target);
+          });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      cards.forEach((c) => io.observe(c));
+    }
+
+    if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    cards.forEach((card) => {
+      let raf = 0;
+      card.addEventListener('pointermove', (e) => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width;
+          const y = (e.clientY - r.top) / r.height;
+          card.style.setProperty('--wwd-mx', (x * 100).toFixed(1) + '%');
+          card.style.setProperty('--wwd-my', (y * 100).toFixed(1) + '%');
+          if (!reduced) {
+            card.style.setProperty('--wwd-ry', ((x - 0.5) * 6).toFixed(2) + 'deg');
+            card.style.setProperty('--wwd-rx', ((0.5 - y) * 5).toFixed(2) + 'deg');
+          }
+        });
+      });
+      card.addEventListener('pointerleave', () => {
+        cancelAnimationFrame(raf);
+        card.style.setProperty('--wwd-rx', '0deg');
+        card.style.setProperty('--wwd-ry', '0deg');
+      });
+    });
+  }
+
+  if (document.readyState === 'complete') setup();
+  else addEventListener('load', setup, { once: true });
 })();
