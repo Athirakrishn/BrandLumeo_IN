@@ -53,3 +53,79 @@
   document.documentElement.addEventListener('pointerleave', hide);
   addEventListener('blur', hide);
 })();
+/* Main headings: clicking a letter plays a green light sweep (and a small hop) on that letter. */
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const HEADINGS = '.rn-display';
+
+  function caretAt(x, y) {
+    if (document.caretPositionFromPoint) {
+      const p = document.caretPositionFromPoint(x, y);
+      return p && { node: p.offsetNode, offset: p.offset };
+    }
+    if (document.caretRangeFromPoint) {
+      const r = document.caretRangeFromPoint(x, y);
+      return r && { node: r.startContainer, offset: r.startOffset };
+    }
+    return null;
+  }
+
+  // The caret sits between characters; pick the character whose box holds the click.
+  function charAt(node, offset, x, y) {
+    const range = document.createRange();
+    for (const o of [offset, offset - 1]) {
+      if (o < 0 || o >= node.data.length) continue;
+      range.setStart(node, o);
+      range.setEnd(node, o + 1);
+      for (const b of range.getClientRects()) {
+        if (x >= b.left && x <= b.right && y >= b.top && y <= b.bottom) return o;
+      }
+    }
+    return -1;
+  }
+
+  function play(span) {
+    span.classList.remove('lt-pop');
+    void span.offsetWidth;
+    span.classList.add('lt-pop');
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest || !e.target.closest(HEADINGS)) return;
+    const sel = getSelection();
+    if (sel && !sel.isCollapsed) return;
+
+    const hit = caretAt(e.clientX, e.clientY);
+    if (!hit || hit.node.nodeType !== Node.TEXT_NODE) return;
+    const node = hit.node;
+    const parent = node.parentElement;
+    if (!parent || !parent.closest(HEADINGS)) return;
+
+    // Clicking a letter that is still animating: replay it.
+    if (parent.classList.contains('lt-letter')) { play(parent); return; }
+
+    const i = charAt(node, hit.offset, e.clientX, e.clientY);
+    if (i < 0 || /\s/.test(node.data[i])) return;
+
+    const base = getComputedStyle(parent).color;
+    const transparent = base === 'transparent' || /,\s*0\)$/.test(base);
+
+    const after = node.splitText(i + 1);
+    const mid = node.splitText(i);
+    const span = document.createElement('span');
+    span.className = 'lt-letter';
+    span.style.setProperty('--lt-base', transparent ? '#575b5f' : base);
+    parent.insertBefore(span, mid);
+    span.append(mid);
+    play(span);
+
+    // Put the text back exactly as it was once the sweep is done.
+    span.addEventListener('animationend', function done(ev) {
+      if (ev.animationName !== 'lt-sweep') return;
+      span.removeEventListener('animationend', done);
+      node.data += mid.data + after.data;
+      span.remove();
+      after.remove();
+    });
+  });
+})();

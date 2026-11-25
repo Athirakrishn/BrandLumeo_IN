@@ -414,6 +414,10 @@ html.hf-pending .rn-page-hero .rn-display {
 @keyframes wwd-spin{to{--wwd-a:360deg}}
 @keyframes wwd-drift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-6vw,4vw,0) scale(1.15)}}
 @keyframes wwd-sheen{0%{background-position:120% 0}100%{background-position:-120% 0}}
+/* Main headings: clicked letter gets a green light sweep and a small hop (see cursor-follow.js). */
+@keyframes lt-sweep{0%{background-position:130% 0}100%{background-position:-30% 0}}
+@keyframes lt-hop{0%,100%{top:0}35%{top:-.14em}}
+.lt-letter.lt-pop{position:relative;background:linear-gradient(100deg,var(--lt-base) 0%,var(--lt-base) 30%,#6fe095 50%,var(--lt-base) 70%,var(--lt-base) 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:#0000;-webkit-text-fill-color:#0000;animation:lt-sweep 1.1s ease-in-out both,lt-hop .55s cubic-bezier(.16,1,.3,1)}
 @keyframes wwd-pulse{0%,100%{box-shadow:0 0 0 0 #0aa53e80}70%{box-shadow:0 0 0 10px #0aa53e00}}
 .svc-wwd{position:relative;overflow:hidden;isolation:isolate}
 .svc-wwd::before{content:"";position:absolute;z-index:-1;top:-10%;right:-15%;width:min(70vw,900px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#0aa53e2e 0%,#0aa53e00 65%);filter:blur(20px);animation:wwd-drift 18s ease-in-out infinite;pointer-events:none}
