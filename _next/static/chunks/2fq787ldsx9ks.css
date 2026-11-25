@@ -159,7 +159,7 @@
   33% { transform: translate3d(-9vw, -6vw, 0) scale(.9); }
   66% { transform: translate3d(4vw, -2vw, 0) scale(1.12); }
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -171,8 +171,8 @@
   background: #121212;
   text-align: center;
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::before,
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::after {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero)::before,
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero)::after {
   content: "";
   position: absolute;
   z-index: 0;
@@ -181,14 +181,14 @@
   will-change: transform;
   animation: bl-hero-drift-a 18s ease-in-out infinite;
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::before {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero)::before {
   left: -22%;
   top: -40%;
   width: 78vw;
   height: 78vw;
   background: radial-gradient(closest-side, rgba(52, 210, 100, .42), rgba(52, 210, 100, .16) 55%, transparent);
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::after {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero)::after {
   right: -28%;
   bottom: -45%;
   width: 88vw;
@@ -198,7 +198,7 @@
   animation-duration: 21s;
 }
 /* vignette + top shade for the nav */
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-wrap::before {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-wrap::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -208,35 +208,35 @@
     linear-gradient(to bottom, rgba(0, 0, 0, .78), transparent 26%),
     radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, .55) 100%);
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-wrap {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-wrap > * {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-wrap > * {
   position: relative;
   z-index: 2;
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-eyebrow {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-eyebrow {
   color: #d8f5e1;
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-display {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-display {
   color: #fff;
   margin-bottom: clamp(20px, 2.4vw, 32px);
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-hero-row {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-hero-row {
   flex-direction: column;
   align-items: center;
   gap: clamp(24px, 3vw, 40px);
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-lead {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-lead {
   color: #e4e7e5;
   max-width: 40ch;
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-actions {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-actions {
   justify-content: center;
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-btn--solid {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-btn--solid {
   min-height: clamp(48px, 3.4vw, 60px);
   padding: 0 clamp(22px, 2vw, 34px);
   border: 0;
@@ -248,26 +248,26 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
   transition: background-color .25s, color .25s, transform .25s;
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-btn--solid:hover {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-btn--solid:hover {
   background: #34d264;
   color: #000;
   transform: translateY(-2px);
 }
 @media (max-width: 720px) {
-  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::before { width: 130vw; height: 130vw; top: -30%; left: -50%; }
-  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::after { width: 140vw; height: 140vw; right: -60%; bottom: -30%; }
+  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero)::before { width: 130vw; height: 130vw; top: -30%; left: -50%; }
+  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero)::after { width: 140vw; height: 140vw; right: -60%; bottom: -30%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::before,
-  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero)::after { animation: none; }
+  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero)::before,
+  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero)::after { animation: none; }
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) {
   border-bottom: 0;
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-hero-row {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-hero-row {
   display: flex;
 }
-:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero.ct-hero) .rn-hero-row .rn-btn {
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"], .rn-page-hero.ct-hero) .rn-hero-row .rn-btn {
   margin-top: 0;
 }
 .rn-page-hero.ct-hero .ct-hero__glow {
@@ -291,7 +291,7 @@
 }
 
 /* Contact hero heading: rise-in + fall-down on scroll (driven by /css/heading-fall.js) */
-html.hf-pending .ct-hero .rn-display {
+html.hf-pending .rn-page-hero .rn-display {
   visibility: hidden;
 }
 .hf-ready .hf-word {
@@ -335,3 +335,42 @@ html.hf-pending .ct-hero .rn-display {
 .ct-map iframe {
   filter: none;
 }
+
+/* Services pages: hero matches the contact page (badge eyebrow, no side visual) */
+.rn-page-hero[aria-label="Brandlumeo Services Overview"] .rn-media {
+  display: none;
+}
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"]) .rn-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 8px 16px;
+  border: 1px solid #0aa53e59;
+  border-radius: 999px;
+  background: #0aa53e14;
+  color: #d8f5e1;
+  font-size: 13px;
+  letter-spacing: .2px;
+  text-transform: none;
+}
+:is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"]) .rn-eyebrow::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0aa53e;
+  animation: svc-badge-ping 1.8s ease-out infinite;
+}
+@keyframes svc-badge-ping {
+  0% { box-shadow: 0 0 0 0 #0aa53e99; }
+  100% { box-shadow: 0 0 0 9px #0aa53e00; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.rn-page-hero:has(.rn-eyebrow a[href="/services/"]), .rn-page-hero[aria-label="Brandlumeo Services Overview"]) .rn-eyebrow::before { animation: none; }
+}
+/* Service category links */
+.svc-wwd .svc-card__services li > a { display:block; width:100%; color:#d5ded8; font-size:15px; line-height:1.5; text-decoration:none; padding-block:4px; overflow-wrap:anywhere; }
+.svc-wwd .svc-card__services li > a:hover { color:#6fe095; text-decoration:underline; text-underline-offset:4px; }
+.svc-wwd .svc-card__services li { min-width:0; }
